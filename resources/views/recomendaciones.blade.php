@@ -26,7 +26,8 @@
                         <div class="x_content">
                             <div class="">
                                 <div class="img">
-                                    <img class="img-responsive avatar-view" src={{ URL::asset($tics) }} alt="Avatar" title="Change the avatar">
+                                    <img class="img-responsive avatar-view" src={{ URL::asset($tics) }} alt="Avatar" 
+                                    title="Change the avatar" style="width:290px !important; height:150px !important">
                                 </div>
                             </div>
                             <div class="pricing_footer">
@@ -45,7 +46,8 @@
                         <div class="x_content img">
                             <div class="">
                                 <div class="img">
-                                    <img class="img-responsive avatar-view" src={{ URL::asset($dida) }} alt="Avatar" title="Change the avatar">
+                                    <img class="img-responsive avatar-view" src={{ URL::asset($dida) }} alt="Avatar" title="Change the avatar"
+                                    style="width:290px !important; height:150px !important">
                                 </div>
                             </div>
                             <div class="pricing_footer">
@@ -64,7 +66,8 @@
                         <div class="x_content">
                             <div class="">
                                 <div class="img">
-                                    <img class="img-responsive avatar-view" src={{ URL::asset($peda) }} alt="Avatar" title="Change the avatar">
+                                    <img class="img-responsive avatar-view" src={{ URL::asset($peda) }} alt="Avatar" title="Change the avatar"
+                                    style="width:290px !important; height:150px !important">
                                 </div>
                             </div>
                             <div class="pricing_footer">
