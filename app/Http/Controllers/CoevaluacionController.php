@@ -89,14 +89,21 @@ class CoevaluacionController extends Controller
             $preguntas_peda = Pregunta::where([['tipo', 'coevaluacion'], ['categoria_id', '2']])->get();
             $preguntas_dida = Pregunta::where([['tipo', 'coevaluacion'], ['categoria_id', '3']])->get();
             $ciclo = $request->ciclo;
-            $materias = materia_user::join("materias", "materias.id", "=", "materia_users.materias_id")->select("materias.materia")
+            $materias = materia_user::join("materias", "materias.id", "=", "materia_users.materias_id")
+            ->select("materias.materia", "materias.area")
                 ->where("materia_users.docente", "=", $cedula)->get();
             $areas = area_user::join("area_conocimientos", "area_conocimientos.id", "=", "area_users.area_conocimiento_id")
                 ->select("area_conocimientos.area")->where("area_users.usuario", "=", $cedula)->get();
 
-                //comprueba si ya este coevaluador realizo la prueba al docente
-            $comprobacion = Comprobacione::where([['ci_coevaluador_id','=',auth()->user()->cedula],
-            ['evaluado','=', $cedula]])->first();
+            $areas_coe = area_user::join("area_conocimientos", "area_conocimientos.id", "=", "area_users.area_conocimiento_id")
+                ->select("area_conocimientos.area")->where("area_users.usuario", "=", auth()->user()->cedula)->get();
+
+
+            //comprueba si ya este coevaluador realizo la prueba al docente
+            $comprobacion = Comprobacione::where([
+                ['ci_coevaluador_id', '=', auth()->user()->cedula],
+                ['evaluado', '=', $cedula]
+            ])->first();
 
             return view('Evaluaciones/coevaluacion',  compact(
                 'id',
@@ -111,6 +118,7 @@ class CoevaluacionController extends Controller
                 'ciclo',
                 'materias',
                 'areas',
+                'areas_coe',
                 'comprobacion'
             ));
         }
@@ -119,7 +127,7 @@ class CoevaluacionController extends Controller
             $request->validate([
                 'area', 'materia' => 'required'
             ]);
-            
+
             $ced = $request->cedula;
             $user = User::where('cedula', '=', $ced)->first();
             $ciclo = Ciclo::where('ciclo_actual', '2')->first();
@@ -141,9 +149,11 @@ class CoevaluacionController extends Controller
                 $respuesta->save();
             }
             \DB::table('respuestas')
-            ->where([['pregunta_id','=',$vare],
-            ['user_id','=', $ced], ['materia','=', $request->materia]])
-            ->update(['observaciones' => $request->observaciones]);
+                ->where([
+                    ['pregunta_id', '=', $vare],
+                    ['user_id', '=', $ced], ['materia', '=', $request->materia]
+                ])
+                ->update(['observaciones' => $request->observaciones]);
 
 
             $comprobar = new Comprobacione;

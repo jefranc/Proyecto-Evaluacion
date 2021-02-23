@@ -38,7 +38,7 @@
                         <div class="">
                             @if($total_auto != null)
                             <h3>La nota global de autoevaluación es de: </h3>
-                            <h3>{{ $total_auto }}</h3>
+                            <h3>{{ $total_auto }}/100</h3>
                             @else
                             <h3>No existen resultados </h3>
                             @endif
@@ -169,7 +169,7 @@
                         <div class="">
                             @if($mate != null)
                             <h3>La nota global de coevaluación en la materia de {{ $mate }} es de: </h3>
-                            <h3>{{ $total_coe }}</h3>
+                            <h3>{{ $total_coe }}/100</h3>
                             @else
                             <h3>No existen resultados </h3>
                             @endif
@@ -292,7 +292,7 @@
     var chartauto = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ['TICS: ' + tics, 'PEDAGOGICOS: ' + peda, 'DIDACTICAS: ' + dida],
+            labels: ['TICS', 'PEDAGOGICOS', 'DIDACTICAS'],
             datasets: [{
                 label: '# of Votes',
                 data: [tics, peda, dida],
@@ -335,7 +335,7 @@
     var chartcoe = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ['TICS: ' + tics, 'PEDAGOGICOS: ' + peda, 'DIDACTICAS: ' + dida],
+            labels: ['TICS', 'PEDAGOGICOS', 'DIDACTICAS',],
             datasets: [{
                 label: '# of Votes',
                 data: [tics, peda, dida],
@@ -371,6 +371,7 @@
 
 <script type="text/javascript">
     //GRAFICA SOLO AUTOEVALUACION-PEDAGOGIA
+    var peda2 = "<?php echo $resultado_auto_peda; ?>";
     var peda = <?php echo json_encode($pedagogico); ?>;
     var pregunta = <?php echo json_encode($pregunta_peda); ?>;
     console.log(peda);
@@ -380,7 +381,7 @@
         data: {
             labels: pregunta,
             datasets: [{
-                label: 'Respuestas Pedagogicas',
+                label: 'Respuestas Pedagogicas: ' + peda2,
                 data: peda,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -415,6 +416,7 @@
 
 <script type="text/javascript">
     //GRAFICA SOLO AUTOEVALUACION-DIDACTICA
+    var dida2 = "<?php echo $resultado_auto_dida; ?>";
     var dida = <?php echo json_encode($didactica); ?>;
     var pregunta = <?php echo json_encode($pregunta_dida); ?>;
     console.log(dida);
@@ -424,7 +426,7 @@
         data: {
             labels: pregunta,
             datasets: [{
-                label: 'Respuestas Didacticas',
+                label: 'Respuestas Didacticas: ' + dida2,
                 data: dida,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -459,6 +461,7 @@
 
 <script type="text/javascript">
     //GRAFICA SOLO AUTOEVALUACION-TICS
+    var tics2 = "<?php echo $resultado_auto_tic; ?>";
     var tics = <?php echo json_encode($tics); ?>;
     var pregunta = <?php echo json_encode($pregunta_tics); ?>;
     console.log(tics);
@@ -468,7 +471,7 @@
         data: {
             labels: pregunta,
             datasets: [{
-                label: 'Respuestas TICS',
+                label: 'Respuestas TICS: ' + tics2,
                 data: tics,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -503,6 +506,7 @@
 
 <script type="text/javascript">
     //GRAFICA SOLO COEVALUACION-PEDAGOGIA
+    var peda2 = "<?php echo $resultado_coe_peda; ?>";
     var peda = <?php echo json_encode($pedagogico_coe); ?>;
     var pregunta = <?php echo json_encode($pregunta_peda_coe); ?>;
     console.log(peda);
@@ -512,7 +516,7 @@
         data: {
             labels: pregunta,
             datasets: [{
-                label: 'Respuestas Pedagogicas',
+                label: 'Respuestas Pedagogicas: ' + peda2,
                 data: peda,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -547,6 +551,7 @@
 
 <script type="text/javascript">
     //GRAFICA SOLO COEVALUACION-DIDACTICA
+    var dida2 = "<?php echo $resultado_coe_dida; ?>";
     var dida = <?php echo json_encode($didactica_coe); ?>;
     var pregunta = <?php echo json_encode($pregunta_dida_coe); ?>;
     console.log(dida);
@@ -556,7 +561,7 @@
         data: {
             labels: pregunta,
             datasets: [{
-                label: 'Respuestas Didacticas',
+                label: 'Respuestas Didacticas: ' + dida2,
                 data: dida,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -591,6 +596,7 @@
 
 <script type="text/javascript">
     //GRAFICA SOLO COEVALUACION-TICS
+    var tics2 = "<?php echo $resultado_coe_tic; ?>";
     var tics = <?php echo json_encode($tics_coe); ?>;
     var pregunta = <?php echo json_encode($pregunta_tics_coe); ?>;
     console.log(tics);
@@ -600,7 +606,7 @@
         data: {
             labels: pregunta,
             datasets: [{
-                label: 'Respuestas TICS',
+                label: 'Respuestas TICS: ' + tics2,
                 data: tics,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',

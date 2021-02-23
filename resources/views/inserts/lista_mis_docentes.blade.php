@@ -13,7 +13,6 @@
     <table class="table table-bordered" id="mytable">
         <thead>
             <tr class="bg-info">
-                <th scope="col">#</th>
                 <th scope="col">Apellido</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Cedula</th>
@@ -24,7 +23,6 @@
         <tbody>
             <?php
             $tipo = 'eliminar_docente';
-            $num = 1;
             ?>
             <form action="{{ route('lista_mis_docentes.update',$tipo) }}" method="POST">
                 @csrf
@@ -32,7 +30,6 @@
                 @foreach($docentes as $docente)
                 <tr>
                     @if($docente->evaluador1 == $cedula)
-                    <th scope="row">{{ $num }}</th>
                     <td class=" ">{{ $docente->apellido }}</td>
                     <td class=" ">{{ $docente->name }}</td>
                     <td class=" ">{{ $docente->cedula }}</td>
@@ -40,11 +37,7 @@
                     <td class=" last">
                         <center><button class="btncedula btn-outline-danger" data-id="{{ $docente->cedula }}" value="Editar">Eliminar Asignación</button>
                     </td>
-                    <?php
-                    $num = $num + 1;
-                    ?>
                     @elseif($docente->evaluador2 == $cedula)
-                    <th scope="row">{{ $num }}</th>
                     <td class=" ">{{ $docente->apellido }}</td>
                     <td class=" ">{{ $docente->name }}</td>
                     <td class=" ">{{ $docente->cedula }}</td>
@@ -52,11 +45,7 @@
                     <td class=" last">
                         <center><button class="btncedula btn-outline-danger" data-id="{{ $docente->cedula }}" value="Editar">Eliminar</button>
                     </td>
-                    <?php
-                    $num = $num + 1;
-                    ?>
                     @elseif($docente->evaluador3 == $cedula)
-                    <th scope="row">{{ $num }}</th>
                     <td class=" ">{{ $docente->apellido }}</td>
                     <td class=" ">{{ $docente->name }}</td>
                     <td class=" ">{{ $docente->cedula }}</td>
@@ -64,11 +53,7 @@
                     <td class=" last">
                         <center><button class="btncedula btn-outline-danger" data-id="{{ $docente->cedula }}" value="Editar">Eliminar</button>
                     </td>
-                    <?php
-                    $num = $num + 1;
-                    ?>
                     @elseif($docente->evaluador4 == $cedula)
-                    <th scope="row">{{ $num }}</th>
                     <td class=" ">{{ $docente->apellido }}</td>
                     <td class=" ">{{ $docente->name }}</td>
                     <td class=" ">{{ $docente->cedula }}</td>
@@ -76,11 +61,7 @@
                     <td class=" last">
                         <center><button class="btncedula btn-outline-danger" data-id="{{ $docente->cedula }}" value="Editar">Eliminar</button>
                     </td>
-                    <?php
-                    $num = $num + 1;
-                    ?>
                     @elseif($docente->evaluador5 == $cedula)
-                    <th scope="row">{{ $num }}</th>
                     <td class=" ">{{ $docente->apellido }}</td>
                     <td class=" ">{{ $docente->name }}</td>
                     <td class=" ">{{ $docente->cedula }}</td>
@@ -88,9 +69,6 @@
                     <td class=" last">
                         <center><button class="btncedula btn-outline-danger" data-id="{{ $docente->cedula }}" value="Editar">Eliminar</button>
                     </td>
-                    <?php
-                    $num = $num + 1;
-                    ?>
                     @endif
                 </tr>
                 @endforeach
@@ -117,7 +95,6 @@
             </div>
             <?php
             $tipo = 'añadir_docente';
-            $num = 1;
             $cont = 0;
             ?>
             <form action="{{ route('lista_mis_docentes.update',$tipo) }}" method="POST">
@@ -129,7 +106,6 @@
                         <table class="table table-bordered" id="mytable2">
                             <thead>
                                 <tr class="bg-info">
-                                    <th scope="col">#</th>
                                     <th scope="col">Apellido</th>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Cedula</th>
@@ -150,7 +126,6 @@
                                     @elseif($docente->evaluador5 == $cedula)
 
                                     @else
-                                    <th scope="row">{{ $num }}</th>
                                     <td class=" ">{{ $docente->apellido }}</td>
                                     <td class=" ">{{ $docente->name }}</td>
                                     <td class=" ">{{ $docente->cedula }}</td>
@@ -159,15 +134,8 @@
                                     </td>
                                     @endif
                                 </tr>
-                                <?php
-                                $num = $num + 1;
-                                ?>
                                 @endforeach
-
                             </tbody>
-                            <?php
-                            $num = $num - 1;
-                            ?>
                             <input type="hidden" name="cedula" id="cedu" value="{{ $cedula }}" />
                         </table>
                     </div>

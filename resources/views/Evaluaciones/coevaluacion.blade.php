@@ -16,6 +16,8 @@
 
 <body>
     <?php
+    $area_mate = array();
+    $pos = '0';
     $tipo = 'coe';
     ?>
     <form id="a" name="formulario" action="{{ route('coevaluacion.update', $tipo) }}" class="form-label-left input_mask" method="POST">
@@ -34,9 +36,20 @@
             <select name="area" class="form-select" id="inputGroupSelect02">
                 <option selected></option>
                 @foreach($areas as $area)
+                @foreach($areas_coe as $areas_co)
+                @if($area->area == $areas_co->area)
                 <option name="{{ $area->area }}" value="{{ $area->area }}">{{ $area->area }}</option>
+                <?php
+                $area_mate[$pos] = $area->area;
+                $pos = $pos + 1;
+                ?>
+                @endif
+                @endforeach
                 @endforeach
             </select>
+            <?php
+            $pos = '0';
+            ?>
         </div>
 
         <div class="input-group mb-3">
@@ -44,7 +57,11 @@
             <select name="materia" class="form-select" id="inputGroupSelect01" required>
                 <option selected></option>
                 @foreach($materias as $materia)
+                @foreach($area_mate as $area_mat)
+                @if($area_mat == $materia->area)
                 <option name="{{ $materia->materia }}" value="{{ $materia->materia }}">{{ $materia->materia }}</option>
+                @endif
+                @endforeach
                 @endforeach
             </select>
         </div>
@@ -89,7 +106,9 @@
 
                 <tr>
                     <td colspan="5">
-                        <h5><center>Pedagógica</h5>
+                        <h5>
+                            <center>Pedagógica
+                        </h5>
                     </td>
                 </tr>
                 @foreach ($preguntas_peda as $preguntas_ped)
@@ -108,7 +127,9 @@
 
                 <tr>
                     <td colspan="5">
-                        <h5><center>Didáctica</h5>
+                        <h5>
+                            <center>Didáctica
+                        </h5>
                     </td>
                 </tr>
                 @foreach ($preguntas_dida as $preguntas_did)
@@ -127,7 +148,9 @@
 
                 <tr>
                     <td colspan="5">
-                        <h5><center>TICS</h5>
+                        <h5>
+                            <center>TICS
+                        </h5>
                     </td>
                 </tr>
                 @foreach ($preguntas_tics as $preguntas_tic)
@@ -144,9 +167,9 @@
                 ?>
                 @endforeach
 
-                
 
-                
+
+
             </tbody>
         </table>
         <div class="input-group input-group-lg">

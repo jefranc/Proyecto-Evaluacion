@@ -48,7 +48,7 @@
                         <div class="">
                             @if($total_auto != null)
                             <h3>La nota global de autoevaluación en la materia de {{ $mate }} es de: </h3>
-                            <h3>{{ $total_auto }}</h3>
+                            <h3>{{ $total_auto }}/100</h3>
                             @else
                             <h3>No existen resultados </h3>
                             @endif
@@ -180,7 +180,7 @@
                         <div class="">
                             @if($mate != null)
                             <h3>La nota global de coevaluación en la materia de {{ $mate }} es de: </h3>
-                            <h3>{{ $total_coe }}</h3>
+                            <h3>{{ $total_coe }}/100</h3>
                             @else
                             <h3>No existen resultados </h3>
                             @endif
