@@ -30,7 +30,7 @@
             <li><a href="{{route('docentes')}}"> Editar Información de los Usuarios</a></li>
             @endcan
             @can('dar_permisos')
-            <li><a href="{{route('docentes')}}"> Editar Información de los Usuarios</a></li>
+            <li><a href="{{ route('docentes') }}"> Editar Información de los Usuarios</a></li>
             @endcan
 
             @can('areas')
@@ -45,6 +45,13 @@
                     @can('dar_permisos')
                     <li><a href="{{route('mantenimiento.index')}}"> Mantenimiento</a></li>
                     @endcan
+                    <li><a> Información Adicional <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{route('criterios')}}"> Criterios de Evaluación</a></li>
+                            <li><a href="{{ route('preguntas_auto') }}"> Preguntas de Autoevaluación</a></li>
+                            <li><a href="{{route('preguntas_coe')}}"> Preguntas de Coevaluación</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 @endcan
             <li><a href="{{route('recomendaciones')}}"> Cursos Disponibles </a></li>

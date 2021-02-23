@@ -64,10 +64,10 @@ class PermisosSeeder extends Seeder
             'nombre' => 'Tics'
         ]);
         $categoriaPeda = Categoria::insert([
-            'nombre' => 'Pedagogica'
+            'nombre' => 'Pedagógica'
         ]);
         $categoriaDida = Categoria::insert([
-            'nombre' => 'Didactica'
+            'nombre' => 'Didáctica'
         ]);
         
 

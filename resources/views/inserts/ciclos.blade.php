@@ -45,7 +45,7 @@
                                 @foreach($ciclos as $ciclo)
                                 <tr>
                                     <td>{{ $ciclo->ciclo }}</td>
-                                    <td><button class="btnciclo btn-outline-danger" data-id="{{ $ciclo->ciclo }}">Eliminar</button></td>
+                                    <td><button class="btnciclo btn-outline-danger" data-id="{{ $ciclo->ciclo }}">Eliminar Ciclo</button></td>
                                 </tr>
                                 @endforeach
                                 <input type="hidden" name="ciclo_eliminar" id="ciclo_eliminar" value="" />

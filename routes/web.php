@@ -38,6 +38,9 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::group(['middleware' => ['permission:ver_docentes|dar_permisos']], function () {
         Route::get('/docentes','DocentesController@index')->name('docentes');
+        Route::get('/preguntas_auto','Preguntas_AutoController@index')->name('preguntas_auto');
+        Route::get('/preguntas_coe','Preguntas_CoeController@index')->name('preguntas_coe');
+        Route::get('/criterios','CriteriosController@index')->name('criterios');
         Route::resource('editar_usuario', 'Editar_UsuarioController');  
         Route::resource('resultados_todos', 'Resultados_TodosController');  
         Route::resource('resultado_docente', 'Resultado_DocenteController'); 

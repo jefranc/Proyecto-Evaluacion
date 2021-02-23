@@ -38,7 +38,7 @@
                     <td class=" ">{{ $docente->cedula }}</td>
                     <td class=" ">{{ $docente->email }}</td>
                     <td class=" last">
-                        <center><button class="btncedula btn-outline-danger" data-id="{{ $docente->cedula }}" value="Editar">Eliminar</button>
+                        <center><button class="btncedula btn-outline-danger" data-id="{{ $docente->cedula }}" value="Editar">Eliminar Asignación</button>
                     </td>
                     <?php
                     $num = $num + 1;

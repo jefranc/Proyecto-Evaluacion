@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\User;
-use App\Ciclo;
+use App\Pregunta;
 
-class RecomendacionesController extends Controller
+class Preguntas_CoeController extends Controller
 {
     public function __construct()
     {
@@ -20,19 +19,19 @@ class RecomendacionesController extends Controller
         $email = auth()->user()->email;
         $fechaActual = date('d/m/Y');
         $imagen = auth()->user()->imagen;
-        $tics = 'Imagenes\TICS.png';
-        $peda = 'Imagenes\PEDAGOGIA.png';
-        $dida = 'Imagenes\DIDACTICA.png';
 
-        return view('recomendaciones',  compact(
+        $preguntas_tics = Pregunta::where([['tipo', 'coevaluacion'], ['categoria_id', '1']])->get();
+        $preguntas_peda = Pregunta::where([['tipo', 'coevaluacion'], ['categoria_id', '2']])->get();
+        $preguntas_dida = Pregunta::where([['tipo', 'coevaluacion'], ['categoria_id', '3']])->get();
+        return view('inserts/preguntas_auto',  compact(
             'name',
             'cedula',
             'email',
             'fechaActual',
             'imagen',
-            'tics',
-            'peda',
-            'dida'
+            'preguntas_tics',
+            'preguntas_peda',
+            'preguntas_dida'
         ));
     }
 }

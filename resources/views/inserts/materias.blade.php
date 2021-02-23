@@ -44,7 +44,7 @@
                                     <th scope="row">{{ $num }}</th>
                                     <td>{{ $materias1->materia }}</td>
                                     <td>{{ $materias1->area }}</td>
-                                    <td><button class="btnmate btn-outline-danger" data-id="{{ $materias1->materia }}">Eliminar</button></td>
+                                    <td><button class="btnmate btn-outline-danger" data-id="{{ $materias1->materia }}">Eliminar Materia</button></td>
                                 </tr>
                                 <?php
                                 $num = $num + 1;

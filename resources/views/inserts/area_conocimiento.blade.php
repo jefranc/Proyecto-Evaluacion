@@ -43,7 +43,7 @@
                                 <tr>
                                     <th scope="row">{{ $num }}</th>
                                     <td>{{ $areas1->area }}</td>
-                                    <td><button class="btnarea btn-outline-danger" data-id="{{ $areas1->area }}">Eliminar</button></td>
+                                    <td><button class="btnarea btn-outline-danger" data-id="{{ $areas1->area }}">Eliminar Aréa</button></td>
                                 </tr>
                                 <?php
                                 $num = $num + 1;
