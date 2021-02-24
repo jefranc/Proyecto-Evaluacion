@@ -124,12 +124,13 @@
         </div>
     </div>
     <div style="page-break-after: always"></div>
+    @if($docente_coe_ape != null)
     <div>
         <center>
             <h2>Coevaluación</h2>
     </div>
     <div>
-        <h5>Docente Coevaluador: {{ $docente_coe->apellido }} {{ $docente_coe->name }}</h5>
+        <h5>Docente Coevaluador: {{ $docente_coe_ape }} {{ $docente_coe_na }}</h5>
         <h5>Materia: {{ $mate }}</h5>
         <h5>Nota total de Coevaluación: {{ $total_coe }}/100</h5>
 
@@ -233,6 +234,7 @@
             </table>
         </div>
     </div>
+    @endif
 </body>
 
 
