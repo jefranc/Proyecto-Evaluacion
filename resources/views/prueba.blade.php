@@ -50,7 +50,7 @@
                             <h4>Total</h4>
                         </td>
                         <td max-width: 100% style="text-align:center;">
-                            <h4>{{ $resultado_auto_peda }} </h4>
+                            <h4>{{ $resultado_auto_peda }}/100 </h4>
                         </td>
 
                     </tr>
@@ -83,7 +83,7 @@
                             <h4>Total</h4>
                         </td>
                         <td max-width: 100% style="text-align:center;">
-                            <h4>{{ $resultado_auto_dida }} </h4>
+                            <h4>{{ $resultado_auto_dida }}/100 </h4>
                         </td>
 
                     </tr>
@@ -116,7 +116,7 @@
                             <h4>Total</h4>
                         </td>
                         <td max-width: 100% style="text-align:center;">
-                            <h4>{{ $resultado_auto_tic }} </h4>
+                            <h4>{{ $resultado_auto_tic }}/100 </h4>
                         </td>
                     </tr>
                 </tbody>
@@ -161,7 +161,7 @@
                             <h4>Total</h4>
                         </td>
                         <td max-width: 100% style="text-align:center;">
-                            <h4>{{ $resultado_coe_peda }} </h4>
+                            <h4>{{ $resultado_coe_peda }}/100 </h4>
                         </td>
 
                     </tr>
@@ -194,7 +194,7 @@
                             <h4>Total</h4>
                         </td>
                         <td max-width: 100% style="text-align:center;">
-                            <h4>{{ $resultado_coe_dida }} </h4>
+                            <h4>{{ $resultado_coe_dida }}/100 </h4>
                         </td>
 
                     </tr>
@@ -227,7 +227,7 @@
                             <h4>Total</h4>
                         </td>
                         <td max-width: 100% style="text-align:center;">
-                            <h4>{{ $resultado_coe_tic }} </h4>
+                            <h4>{{ $resultado_coe_tic }}/100 </h4>
                         </td>
                     </tr>
                 </tbody>
