@@ -23,7 +23,7 @@ Route::get('/', function () {
 //Route::get('principal', 'TemplateController@principal')->name('principal');
 
 Auth::routes();
-Route::get('/pdf', 'PdfController@PDF')->name('descargarPDF');
+
 Route::middleware(['auth'])->group(function () {
     Route::group(['middleware' => ['permission:coevaluar|ver_docentes|dar_permisos|evaluar']], function () {
         Route::get('/index', 'TemplateController@index')->name('index');
@@ -31,6 +31,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('editar_perfil', 'Editar_PerfilController');
         Route::resource('autoevaluacion', 'AutoevaluacionController');
         Route::resource('resultados', 'ResultadosController');
+        Route::get('/pdf', 'PdfController@PDF')->name('descargarPDF');
     });
     Route::group(['middleware' => ['permission:coevaluar']], function () {
         Route::resource('coevaluacion_lista', 'Coevaluacion_ListaController');
@@ -42,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/preguntas_auto','Preguntas_AutoController@index')->name('preguntas_auto');
         Route::get('/preguntas_coe','Preguntas_CoeController@index')->name('preguntas_coe');
         Route::get('/criterios','CriteriosController@index')->name('criterios');
+        Route::get('/pdf2', 'Pdf2Controller@PDF2')->name('descargarPDF2');
         Route::resource('editar_usuario', 'Editar_UsuarioController');  
         Route::resource('resultados_todos', 'Resultados_TodosController');  
         Route::resource('resultado_docente', 'Resultado_DocenteController'); 

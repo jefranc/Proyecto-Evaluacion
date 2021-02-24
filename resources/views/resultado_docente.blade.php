@@ -35,6 +35,17 @@
                 </div>
                 <div class="pull-right">
                     <h2>Autoevaluación Ciclo: {{ $ciclos }}</h2>
+                    @if($total_auto != null)
+                    <form action="{{ route('descargarPDF2') }}" method="GET">
+                    <input type="hidden" name="cedul" id="cedu" value="{{ $usuario->cedula }}" />
+                        <input type="hidden" name="ciclo" id="cedu" value="{{ $ciclos }}" />
+                        <input type="hidden" name="total_auto" id="total_auto" value="{{ $total_auto }}" />
+                        <input type="hidden" name="resultado_auto_peda" value="{{ $resultado_auto_peda }}" />
+                        <input type="hidden" name="materia" value="{{ $mate }}" />
+                        <input type="hidden" name="total_coe" value="{{ $total_coe }}" />
+                        <button class="btn btn-sm btn-info" target="_blank">Descargar Resultados</button>
+                    </form>
+                    @endif
                 </div>
                 <div class="clearfix"></div>
             </div>
