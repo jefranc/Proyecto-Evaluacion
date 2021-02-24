@@ -18,7 +18,7 @@ class CreatePreguntasRespuestas extends Migration
         //table ciclos
         Schema::create('ciclos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('ciclo', 20);
+            $table->string('ciclo', 20)->unique();
             $table->string('ciclo_actual', 1)->nullable();
             $table->timestamps();
         });

@@ -58,9 +58,9 @@
 
             <div class="" role="tabpanel" data-example-id="togglable-tabs">
                 <ul id="autoevaluacion" class="nav nav-tabs bar_tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#pedagogicos1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Pedagogicos</a>
+                    <li role="presentation" class="active"><a href="#pedagogicos1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Pedagógicos</a>
                     </li>
-                    <li role="presentation" class=""><a href="#didacticas1" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Didacticas</a>
+                    <li role="presentation" class=""><a href="#didacticas1" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Didácticas</a>
                     </li>
                     <li role="presentation" class=""><a href="#tics1" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">TICS</a>
                     </li>
@@ -190,9 +190,9 @@
             </div>
             <div class="" role="tabpanel" data-example-id="togglable-tabs">
                 <ul id="coevaluacion" class="nav nav-tabs bar_tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#pedagogicos2" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Pedagogicos</a>
+                    <li role="presentation" class="active"><a href="#pedagogicos2" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Pedagógicos</a>
                     </li>
-                    <li role="presentation" class=""><a href="#didacticas2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Didacticas</a>
+                    <li role="presentation" class=""><a href="#didacticas2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Didácticas</a>
                     </li>
                     <li role="presentation" class=""><a href="#tics2" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">TICS</a>
                     </li>
@@ -391,7 +391,7 @@
         data: {
             labels: pregunta,
             datasets: [{
-                label: 'Respuestas Pedagogicas: ' + peda2,
+                label: 'Respuestas Pedagógicas: ' + peda2,
                 data: peda,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -436,7 +436,7 @@
         data: {
             labels: pregunta,
             datasets: [{
-                label: 'Respuestas Didacticas: ' + dida2,
+                label: 'Respuestas Didácticas: ' + dida2,
                 data: dida,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -526,7 +526,7 @@
         data: {
             labels: pregunta,
             datasets: [{
-                label: 'Respuestas Pedagogicas: ' + peda2,
+                label: 'Respuestas Pedagógicas: ' + peda2,
                 data: peda,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -571,7 +571,7 @@
         data: {
             labels: pregunta,
             datasets: [{
-                label: 'Respuestas Didacticas: ' + dida2,
+                label: 'Respuestas Didácticas: ' + dida2,
                 data: dida,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',

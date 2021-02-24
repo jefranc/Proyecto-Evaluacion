@@ -23,6 +23,7 @@ Route::get('/', function () {
 //Route::get('principal', 'TemplateController@principal')->name('principal');
 
 Auth::routes();
+Route::get('/pdf', 'PdfController@PDF')->name('descargarPDF');
 Route::middleware(['auth'])->group(function () {
     Route::group(['middleware' => ['permission:coevaluar|ver_docentes|dar_permisos|evaluar']], function () {
         Route::get('/index', 'TemplateController@index')->name('index');

@@ -10,6 +10,7 @@ use App\Categoria;
 use App\materia_user;
 use App\materia;
 use phpDocumentor\Reflection\Types\Null_;
+use PDF;
 
 
 class ResultadosController extends Controller
@@ -121,7 +122,7 @@ class ResultadosController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -472,6 +473,8 @@ class ResultadosController extends Controller
         $observaciones = \DB::table('respuestas')->select('observaciones')->where('user_id', $cedula)
             ->where('materia', '=', $mate)->where('ciclo', '=', $ciclos)->get();
         //return $mate;
+
+
 
         return view('resultados',  compact(
             'id',

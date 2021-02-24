@@ -15,10 +15,7 @@
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         @foreach ($ciclo as $cicl)
-        <?php
-        $temp = $cicl->ciclo;
-        ?>
-        <a class="dropdown-item" href="{{ route('resultados.show', $temp )}}">{{ $cicl->ciclo }}</a>
+        <a class="dropdown-item" href="{{ route('resultados.show', $cicl->ciclo )}}">{{ $cicl->ciclo }}</a>
         @endforeach
     </div>
 </div>
@@ -30,16 +27,9 @@
             <div class="x_title">
                 <h2>Autoevaluacion Ciclo: {{ $ciclos }}</h2>
                 <div class="pull-right">
-                    @if($total_auto != null)
-                    <form action="{{ route('descargarPDF') }}" method="GET">
-                        <input type="hidden" name="ciclo" id="cedu" value="{{ $ciclos }}" />
-                        <input type="hidden" name="total_auto" id="total_auto" value="{{ $total_auto }}" />
-                        <input type="hidden" name="resultado_auto_peda" value="{{ $resultado_auto_peda }}" />
-                        <input type="hidden" name="materia" value="{{ $mate }}" />
-                        <input type="hidden" name="total_coe" value="{{ $total_coe }}" />
-                        <button class="btn btn-sm btn-info" target="_blank">Descargar Resultados</button>
-                    </form>
-                    @endif
+                    <a href="{{ route('descargarPDF') }}" class="btn btn-sm btn-info" target="_blank">
+                        <h2> Descargar Resultados</h2>
+                    </a>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -66,7 +56,7 @@
                 <ul id="autoevaluacion" class="nav nav-tabs bar_tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#pedagogicos1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Pedagogicos</a>
                     </li>
-                    <li role="presentation" class=""><a href="#didacticas1" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Didácticas</a>
+                    <li role="presentation" class=""><a href="#didacticas1" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Didacticas</a>
                     </li>
                     <li role="presentation" class=""><a href="#tics1" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">TICS</a>
                     </li>
@@ -196,7 +186,7 @@
                 <ul id="autoevaluacion" class="nav nav-tabs bar_tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#pedagogicos2" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Pedagogicos</a>
                     </li>
-                    <li role="presentation" class=""><a href="#didacticas2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Didácticas</a>
+                    <li role="presentation" class=""><a href="#didacticas2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Didacticas</a>
                     </li>
                     <li role="presentation" class=""><a href="#tics2" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">TICS</a>
                     </li>
@@ -396,7 +386,7 @@
         data: {
             labels: pregunta,
             datasets: [{
-                label: 'Respuestas Pedagógicas: ' + peda2,
+                label: 'Respuestas Pedagogicas: ' + peda2,
                 data: peda,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -441,7 +431,7 @@
         data: {
             labels: pregunta,
             datasets: [{
-                label: 'Respuestas Didácticas: ' + dida2,
+                label: 'Respuestas Didacticas: ' + dida2,
                 data: dida,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -531,7 +521,7 @@
         data: {
             labels: pregunta,
             datasets: [{
-                label: 'Respuestas Pedagógicas: ' + peda2,
+                label: 'Respuestas Pedagogicas: ' + peda2,
                 data: peda,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -576,7 +566,7 @@
         data: {
             labels: pregunta,
             datasets: [{
-                label: 'Respuestas Didácticas: ' + dida2,
+                label: 'Respuestas Didacticas: ' + dida2,
                 data: dida,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',

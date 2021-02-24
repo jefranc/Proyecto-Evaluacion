@@ -146,6 +146,7 @@ class CoevaluacionController extends Controller
                 $respuesta->tipo = $preguntas->tipo;
                 $respuesta->materia = $request->materia;
                 $respuesta->area_conocimiento = $request->area;
+                $respuesta->coevaluador = auth()->user()->cedula;
                 $respuesta->save();
             }
             \DB::table('respuestas')

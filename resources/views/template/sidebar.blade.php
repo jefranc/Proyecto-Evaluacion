@@ -12,7 +12,7 @@
             </li>
             @endcan
             @can('coevaluar')
-            <li><a href="{{route('coevaluacion_lista.index')}}"> Co-Evaluación-Lista de Docentes</a></li>
+            <li><a href="{{route('coevaluacion_lista.index')}}"> Coevaluación-Lista de Docentes</a></li>
             @endcan
             @can('resultados')
             <li><a> Resultados <span class="fa fa-chevron-down"></span></a>
