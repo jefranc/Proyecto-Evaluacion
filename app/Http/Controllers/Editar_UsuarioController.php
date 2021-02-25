@@ -56,17 +56,18 @@ class Editar_UsuarioController extends Controller
 
 
 
-        $areas = \DB::select('select * from area_conocimientos');
+        $areas = \DB::select('select * from area_conocimientos ORDER BY area');
         $areas_user =  \DB::table('area_users')->where('usuario', $cedula)->get();
         $areacount =  area_user::where('usuario', $cedula)->count();
-        $materias = \DB::select('select * from materias');
+        $materias = \DB::select('select * from materias ORDER BY materia');
         $mate =  \DB::table('materia_users')->where('docente', $cedula)->get();
         $matecount =  materia_user::where('docente', $cedula)->count();
         $ciclo = Ciclo::all();
         $mate_user = materia_user::join("materias", "materias.id", "=", "materia_users.materias_id")->select("materias.materia")
             ->where("materia_users.docente", "=", $cedula)->get();
         $user_areas = area_user::join("area_conocimientos", "area_conocimientos.id", "=", "area_users.area_conocimiento_id")
-            ->select("area_conocimientos.area")->where("area_users.usuario", "=", $cedula)->get();
+            ->select("area_conocimientos.area", "area_conocimientos.carrera")->where("area_users.usuario", "=", $cedula)->get();
+
 
 
         //return $roles;

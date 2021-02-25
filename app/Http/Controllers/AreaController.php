@@ -29,7 +29,7 @@ class AreaController extends Controller
         } else {
             $ciclo_actual = $ciclo_actual->ciclo;
         }
-        $areas = area_conocimiento::all();
+        $areas = \DB::select('select * from area_conocimientos ORDER BY carrera');
         $materias = materia::all();
         return view('inserts/area_conocimiento',  compact(
             'name',

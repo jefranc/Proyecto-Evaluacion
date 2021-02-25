@@ -79,7 +79,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'cedula' => $data['cedula'],
             'password' => Hash::make($data['password']),
-            'imagen' => "/storage/defecto.png",
+            'imagen' => "fotoperfil/defecto.png",
             'status' => 0,
             'auto' => 0,
         ]);

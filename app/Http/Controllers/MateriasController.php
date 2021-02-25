@@ -30,7 +30,7 @@ class MateriasController extends Controller
             $ciclo_actual = $ciclo_actual->ciclo;
         }
         $areas = area_conocimiento::all();
-        $materias = materia::all();
+        $materias = \DB::select('select * from materias ORDER BY materia');
         return view('inserts/materias',  compact(
             'name',
             'cedula',
