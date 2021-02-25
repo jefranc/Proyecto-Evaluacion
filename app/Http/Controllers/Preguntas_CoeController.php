@@ -23,7 +23,7 @@ class Preguntas_CoeController extends Controller
         $preguntas_tics = Pregunta::where([['tipo', 'coevaluacion'], ['categoria_id', '1']])->get();
         $preguntas_peda = Pregunta::where([['tipo', 'coevaluacion'], ['categoria_id', '2']])->get();
         $preguntas_dida = Pregunta::where([['tipo', 'coevaluacion'], ['categoria_id', '3']])->get();
-        return view('inserts/preguntas_auto',  compact(
+        return view('inserts/preguntas_coe',  compact(
             'name',
             'cedula',
             'email',

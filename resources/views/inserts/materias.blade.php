@@ -15,7 +15,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#materia">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
                     Agregar una nueva materia
                 </button>
                 <div class="form-group">
@@ -61,7 +61,7 @@
 </div>
 
 <!-- Modal Materias-->
-<div class="modal fade" id="materia" tabindex="-1" role="dialog" aria-labelledby="materiaLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" id="materia" tabindex="-1" role="dialog" aria-labelledby="materiaLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -86,7 +86,7 @@
                         </div>
                         <select class="custom-select" id="inputGroupSelect01" name="area" required>
                             @foreach($areas as $area)
-                            <option value="{{ $area->area }}">{{ $area->area }}</option>
+                            <option value="{{ $area->area }}">{{ $area->area }}-{{ $area->carrera }}</option>
                             @endforeach
                         </select>
                     </div>

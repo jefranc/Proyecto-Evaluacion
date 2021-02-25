@@ -10,7 +10,7 @@
 <body>
     <div class="pull-right">
         <center>
-            <h1>Evaluacion Docente</h1>
+            <h1>Evaluación Docente</h1>
     </div>
     <div>
         <h5>Docente: {{ $user->apellido }} {{ $user->name }}</h5>

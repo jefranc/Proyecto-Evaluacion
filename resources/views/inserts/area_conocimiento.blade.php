@@ -16,7 +16,7 @@
             </div>
             <div class="x_content">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#area_conocimiento">
-                    Agregar una nueva aréa
+                    Agregar una nueva área
                 </button>
                 <div class="form-group">
                     <input type="text" class="form-control" style="width:70%" id="search_area" placeholder="Buscar...">
@@ -27,6 +27,7 @@
                         <thead>
                             <tr class="bg-info">
                                 <th scope="col">#</th>
+                                <th scope="col">Carrera</th>
                                 <th scope="col">Areas del conocimiento disponibles</th>
                                 <th scope="col">Eliminar</th>
                             </tr>
@@ -42,6 +43,7 @@
                                 @foreach($areas as $areas1)
                                 <tr>
                                     <th scope="row">{{ $num }}</th>
+                                    <td>{{ $areas1->carrera }}</td>
                                     <td>{{ $areas1->area }}</td>
                                     <td><button class="btnarea btn-outline-danger" data-id="{{ $areas1->area }}">Eliminar Aréa</button></td>
                                 </tr>
@@ -77,7 +79,10 @@
                 @method('put')
                 <div class="modal-body">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="area" placeholder="Ingrese un area de conocimiento" aria-label="Username" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" name="area" placeholder="Ingrese un area de conocimiento" aria-label="Username" aria-describedby="basic-addon1" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="carrera" placeholder="Ingrese carrera a la que pertenece el área" aria-label="Username" aria-describedby="basic-addon1" required>
                     </div>
                 </div>
                 <div class="modal-footer">

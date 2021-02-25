@@ -75,7 +75,8 @@ class CreatePreguntasRespuestas extends Migration
         //table area de conocimientos
         Schema::create('area_conocimientos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('area')->unique();
+            $table->string('area',50);
+            $table->string('carrera',50);
             $table->timestamps();
         });
 

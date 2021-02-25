@@ -99,6 +99,7 @@ class AreaController extends Controller
         if ($tipo == 'agregar_area') {
             $areas = new area_conocimiento();
             $areas->area = $request->area;
+            $areas->carrera = $request->carrera;
             $areas->save();
         }
 

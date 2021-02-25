@@ -31,7 +31,7 @@
                         <div class="profile_title">
                             <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                 <ul id="autoevaluacion" class="nav nav-tabs bar_tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#informacion_perfil" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Informacion de Perfil</a>
+                                    <li role="presentation" class="active"><a href="#informacion_perfil" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Información de Perfil</a>
                                     </li>
                                     <li role="presentation" class=""><a href="#area_conocimiento" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Area de Conocimiento</a>
                                     </li>
