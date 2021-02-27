@@ -107,11 +107,6 @@ class MantenimientoController extends Controller
                 $user->save();
             }
 
-            $com = comprobacione_auto::all();
-            foreach ($com as $co) {
-                $co->estado = '0';
-                $co->save();
-            }
 
             $compro = comprobacione::all();
             foreach ($compro as $compr) {

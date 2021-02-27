@@ -117,16 +117,6 @@ class CreatePreguntasRespuestas extends Migration
             $table->foreign('area_id')->references('id')->on('area_conocimientos')->onDelete('cascade');
             $table->foreign('materia_id')->references('id')->on('materias')->onDelete('cascade');
         });
-
-        //tabla de comprobacion de autoevaluaciones
-        Schema::create('comprobacione_autos', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('docente', 10);
-            $table->string('materia');
-            $table->string('estado', 1);
-            $table->timestamps();
-            $table->foreign('docente')->references('cedula')->on('users')->onDelete('cascade');
-        });
     }
 
     /**

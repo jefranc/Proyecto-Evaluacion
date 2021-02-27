@@ -33,9 +33,7 @@ class AutoevaluacionController extends Controller
         $ciclo = Ciclo::where('ciclo_actual', '2')->first();
         $materias = materia_user::join("materias", "materias.id", "=", "materia_users.materias_id")->select("materias.materia")
             ->where("materia_users.docente", "=", $cedula)->get();
-        $materias_r = comprobacione_auto::where('docente', $cedula)->get();
-        $conta_mate = comprobacione_auto::where('docente', $cedula)->count();
-        $materias_r_count = comprobacione_auto::where([['docente', $cedula], ['estado', '1']])->count();
+
 
         return view('Evaluaciones/autoevaluacion',  compact(
             'name',
@@ -48,9 +46,6 @@ class AutoevaluacionController extends Controller
             'auto',
             'ciclo',
             'materias',
-            'materias_r',
-            'materias_r_count',
-            'conta_mate'
         ));
     }
 
@@ -82,9 +77,7 @@ class AutoevaluacionController extends Controller
 
         $materias = materia_user::join("materias", "materias.id", "=", "materia_users.materias_id")->select("materias.materia")
             ->where("materia_users.docente", "=", $cedula)->get();
-        $materias_r = comprobacione_auto::where('docente', $cedula)->get();
-        $conta_mate = comprobacione_auto::where('docente', $cedula)->count();
-        $materias_r_count = comprobacione_auto::where([['docente', $cedula], ['estado', '1']])->count();
+
 
         return view('Evaluaciones/autoevaluacion',  compact(
             'name',
@@ -97,9 +90,6 @@ class AutoevaluacionController extends Controller
             'auto',
             'ciclo',
             'materias',
-            'materias_r',
-            'materias_r_count',
-            'conta_mate'
         ));
     }
 
