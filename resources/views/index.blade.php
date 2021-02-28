@@ -12,7 +12,7 @@
 @section('scripts')
 <script>
     $(document).ready(function() {
-        console.log("listos!");
+        console.log("listoss!");
     });
 </script>
 @endsection
