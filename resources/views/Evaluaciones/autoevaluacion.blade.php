@@ -150,7 +150,7 @@
 @section('scripts')
 <script>
     $(document).ready(function() {
-        console.log("liaaasto!");
+        console.log("liaaaaaasto!");
     });
 </script>
 @endsection
