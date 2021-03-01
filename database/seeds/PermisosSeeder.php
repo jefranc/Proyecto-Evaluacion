@@ -6,6 +6,7 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use App\User;
 use App\Categoria;
+use App\curso;
 
 class PermisosSeeder extends Seeder
 {
@@ -68,6 +69,33 @@ class PermisosSeeder extends Seeder
         ]);
         $categoriaDida = Categoria::insert([
             'nombre' => 'Didáctica'
+        ]);
+
+
+        //creacion de los cursos
+        $cursos = curso::insert([
+            'curso' => 'Tics en la educación',
+            'criterio' => 'Tics'
+        ]);
+        $cursos = curso::insert([
+            'curso' => 'Didáctica',
+            'criterio' => 'Didáctica'
+        ]);
+        $cursos = curso::insert([
+            'curso' => 'Pedagogía',
+            'criterio' => 'Pedagogía'
+        ]);
+        $cursos = curso::insert([
+            'curso' => 'Metodología de aprendizaje', 
+            'criterio' => 'Pedagogía'
+        ]);
+        $cursos = curso::insert([
+            'curso' => 'Diseño de rúbrica ', 
+            'criterio' => 'Didáctica'
+        ]);
+        $cursos = curso::insert([
+            'curso' => 'Epistemología',
+            'criterio' => 'Tics'
         ]);
         
 

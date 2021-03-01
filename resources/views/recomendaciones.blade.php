@@ -4,88 +4,61 @@
 
 @section('content')
 <div class="page-title">
-    <div class="title_left">
-        <h3>Te recomendamos estos cursos!!!</h3>
-    </div>
 </div>
 <div class="clearfix"></div>
 <div class="row">
     <div class="col-md-12 col-sm-12  ">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Cursos Disponibles</h2>
+                <h2>Te recomendamos estos cursos!!!</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
-
-                <div class="col-md-3 col-sm-6  ">
-                    <div class="pricing">
-                        <div class="title">
-                            <h1>TICS EN LA EDUCACION</h1>
-                        </div>
-                        <div class="x_content">
-                            <div class="">
-                                <div class="img">
-                                    <img class="img-responsive avatar-view" src={{ URL::asset($tics) }} alt="Avatar" 
-                                    title="Change the avatar" style="width:290px !important; height:150px !important">
-                                </div>
-                            </div>
-                            <div class="pricing_footer">
-                                <a href="http://lms.intelcomsys.com/courses/course-v1:UniversidaddeGuayaquil+123+2021_T3/about" class="btn btn-success btn-block" role="button" target="_blank">Revisar Curso</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="table" style="width:20%">
+                    <h3>Cursos Disponibles</h3>
+                    @foreach($cursos as $curso)
+                    <p class="fa fa-book" aria-hidden="true"> {{ $curso->curso }}</p></br>
+                    @endforeach
                 </div>
+                <div class="table" style="width:20%">
+                    @if(($total_auto != null) || ($total_coe != null))
+                    @if(($resultado_auto_tic < 76 ) || ($resultado_auto_peda < 76 ) || ($resultado_auto_dida < 76 ) || ($resultado_coe_tic < 76 ) || ($resultado_coe_peda < 76 ) || ($resultado_coe_dida < 76 )) 
+                    <h3>Cursos Requeridos</h3>
+                        @if(($resultado_auto_tic < 76 ) || ($resultado_coe_tic < 76 )) 
+                            @foreach($cursos as $curso)
+                                @if($curso->criterio == 'Tics')
+                                    <p class="fa fa-plus-square-o" aria-hidden="true"> {{ $curso->curso }}</p></br>
+                                @endif
+                            @endforeach
+                        @endif
+                        @if(($resultado_auto_peda < 76 ) || ($resultado_coe_peda < 76 )) 
+                            @foreach($cursos as $curso)
+                                @if($curso->criterio == 'Pedagogía')
+                                    <p class="fa fa-plus-square-o" aria-hidden="true"> {{ $curso->curso }}</p></br>
+                                @endif
+                            @endforeach
+                        @endif
+                        @if(($resultado_auto_dida < 76 ) || ($resultado_coe_dida < 76 )) 
+                            @foreach($cursos as $curso)
+                                @if($curso->criterio == 'Didáctica')
+                                    <p class="fa fa-plus-square-o" aria-hidden="true"> {{ $curso->curso }}</p></br> 
+                                @endif
+                            @endforeach
+                        @endif
 
-
-                <div class="col-md-3 col-sm-6  ">
-                    <div class="pricing">
-                        <div class="title">
-                            <h1>DIDACTICA</h1>
-                        </div>
-                        <div class="x_content img">
-                            <div class="">
-                                <div class="img">
-                                    <img class="img-responsive avatar-view" src={{ URL::asset($dida) }} alt="Avatar" title="Change the avatar"
-                                    style="width:290px !important; height:150px !important">
-                                </div>
-                            </div>
-                            <div class="pricing_footer">
-                                <a href="http://lms.intelcomsys.com/courses/course-v1:UniversidaddeGuayaquil+123+2021_T2/about" class="btn btn-success btn-block" role="button" target="_blank">Revisar Curso</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-md-3 col-sm-6  ">
-                    <div class="pricing">
-                        <div class="title">
-                            <h1>PEDAGOGIA</h1>
-                        </div>
-                        <div class="x_content">
-                            <div class="">
-                                <div class="img">
-                                    <img class="img-responsive avatar-view" src={{ URL::asset($peda) }} alt="Avatar" title="Change the avatar"
-                                    style="width:290px !important; height:150px !important">
-                                </div>
-                            </div>
-                            <div class="pricing_footer">
-                                <a href="http://lms.intelcomsys.com/courses/course-v1:UniversidaddeGuayaquil+123+2021_T1/about" class="btn btn-success btn-block" role="button" target="_blank">Revisar Curso</a>
-                            </div>
-                        </div>
-                    </div>
+                        @endif 
+                        @endif 
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-@endsection
-@section('scripts')
-<script>
-    $(document).ready(function() {
-        console.log("listo!");
-    });
-</script>
-@endsection
+    @endsection
+    @section('scripts')
+    <script>
+        $(document).ready(function() {
+            console.log("listo!");
+        });
+    </script>
+    @endsection

@@ -65,7 +65,6 @@ $tipo3 = 'coe';
                     @endif
                 </tr>
                 @endforeach
-                <input type="hidden" name="cedula" id="cedula" value="{{ $docente->cedula }}" />
             </form>
         </tbody>
     </table>
@@ -123,7 +122,6 @@ $tipo3 = 'coe';
                     @endif
                 </tr>
                 @endforeach
-                <input type="hidden" name="cedula" id="cedula" value="{{ $docente->cedula }}" />
             </form>
         </tbody>
     </table>

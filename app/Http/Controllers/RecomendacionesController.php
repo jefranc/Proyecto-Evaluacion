@@ -7,6 +7,7 @@ use App\User;
 use App\Ciclo;
 use App\Respuesta;
 use App\Categoria;
+use App\curso;
 use App\materia_user;
 
 class RecomendacionesController extends Controller
@@ -18,24 +19,346 @@ class RecomendacionesController extends Controller
 
     public function index()
     {
+        $ciclos = Ciclo::where('ciclo_actual', 2)->first();
+        $ciclos = $ciclos->ciclo;
+        $id = auth()->user()->id;
         $name = auth()->user()->name;
         $cedula = auth()->user()->cedula;
         $email = auth()->user()->email;
-        $fechaActual = date('d/m/Y');
         $imagen = auth()->user()->imagen;
-        $tics = 'Imagenes\TICS.png';
-        $peda = 'Imagenes\PEDAGOGIA.png';
-        $dida = 'Imagenes\DIDACTICA.png';
+        $array = array();
+        $total_coe = null;
+        $total_auto = null;
+        $materias = materia_user::join("materias", "materias.id", "=", "materia_users.materias_id")->select("materias.materia")
+            ->where("materia_users.docente", "=", $cedula)->get();
+        //Obtener Valores Coevaluacion
+        $res = \DB::table('respuestas')->where('user_id', $cedula)->where('ciclo', $ciclos)->where('tipo', '=', 'coevaluacion')
+            ->get();
+        $conta_coe = \DB::table('respuestas')->where('user_id', $cedula)->where('ciclo', $ciclos)->where('tipo', '=', 'coevaluacion')
+            ->count();
+        $tic = \DB::table('respuestas')->select('resultado')->where('user_id', $cedula)->where('ciclo', $ciclos)->where('categoria', 1)
+            ->where('tipo', '=', 'coevaluacion')->get();
+        $tic_count_coe = \DB::table('respuestas')->select('resultado')->where('user_id', $cedula)->where('ciclo', $ciclos)
+            ->where('categoria', 1)->where('tipo', '=', 'coevaluacion')->count();
+        $peda = \DB::table('respuestas')->select('resultado')->where('user_id', $cedula)->where('ciclo', $ciclos)->where('categoria', 2)
+            ->where('tipo', '=', 'coevaluacion')->get();
+        $peda_count_coe = \DB::table('respuestas')->select('resultado')->where('user_id', $cedula)->where('ciclo', $ciclos)
+            ->where('categoria', 2)->where('tipo', '=', 'coevaluacion')->count();
+        $dida = \DB::table('respuestas')->select('resultado')->where('user_id', $cedula)->where('ciclo', $ciclos)->where('categoria', 3)
+            ->where('tipo', '=', 'coevaluacion')->get();
+        $dida_count_coe = \DB::table('respuestas')->select('resultado')->where('user_id', $cedula)->where('ciclo', $ciclos)
+            ->where('categoria', 3)->where('tipo', '=', 'coevaluacion')->count();
+        //Obtener Valores Autoevaluacion
+        $res2 = \DB::table('respuestas')->where('user_id', $cedula)->where('ciclo', $ciclos)->where('tipo', '=', 'autoevaluacion')
+            ->get();
+        $conta_auto = \DB::table('respuestas')->where('user_id', $cedula)->where('ciclo', $ciclos)->where('tipo', '=', 'autoevaluacion')
+            ->count();
+        $tic2 = \DB::table('respuestas')->select('resultado')->where('user_id', $cedula)->where('ciclo', $ciclos)->where('categoria', 1)
+            ->where('tipo', '=', 'autoevaluacion')->get();
+        $tic_count = \DB::table('respuestas')->select('resultado')->where('user_id', $cedula)->where('ciclo', $ciclos)->where('categoria', 1)
+            ->where('tipo', '=', 'autoevaluacion')->count();
+        $peda2 = \DB::table('respuestas')->select('resultado')->where('user_id', $cedula)->where('ciclo', $ciclos)->where('categoria', 2)
+            ->where('tipo', '=', 'autoevaluacion')->get();
+        $peda_count = \DB::table('respuestas')->select('resultado')->where('user_id', $cedula)->where('ciclo', $ciclos)->where('categoria', 2)
+            ->where('tipo', '=', 'autoevaluacion')->count();
+        $dida2 = \DB::table('respuestas')->select('resultado')->where('user_id', $cedula)->where('ciclo', $ciclos)->where('categoria', 3)
+            ->where('tipo', '=', 'autoevaluacion')->get();
+        $dida_count = \DB::table('respuestas')->select('resultado')->where('user_id', $cedula)->where('ciclo', $ciclos)->where('categoria', 3)
+            ->where('tipo', '=', 'autoevaluacion')->count();
+
+        //arrays autoevaluacion
+        $pedagogico = array();
+        $pregunta_peda = array();
+        $didactica = array();
+        $pregunta_dida = array();
+        $tics = array();
+        $pregunta_tics = array();
+
+        //arrays coevaluacion
+        $pedagogico_coe = array();
+        $pregunta_peda_coe = array();
+        $didactica_coe = array();
+        $pregunta_dida_coe = array();
+        $tics_coe = array();
+        $pregunta_tics_coe = array();
+
+
+
+        /////////////////////////////////////////////////////////////////////////////////////////
+        //calculo de los resultados autoevaluacion de TICS
+        if ($conta_auto != null) {
+
+            $resultado_auto_tic = 0;
+            $contador_preguntas = 0;
+
+            $j = 1;
+
+            for ($i = 0; $i < $tic_count; $i++) {
+                $tics[$i] = $tic2[$i]->resultado;
+                if ($tic2[$i]->resultado == 1) {
+                    $tics[$i] = 0;
+                } elseif ($tic2[$i]->resultado == 2) {
+                    $tics[$i] = 0.50;
+                } elseif ($tic2[$i]->resultado == 3) {
+                    $tics[$i] = 0.75;
+                } elseif ($tic2[$i]->resultado == 4) {
+                    $tics[$i] = 1;
+                }
+                $pregunta_tics[$i] = 'Pregunta ' . $j;
+                $j++;
+            }
+
+            foreach ($tic2 as $ti) {
+                if ($ti->resultado == 1) {
+                    $resultado_auto_tic = $resultado_auto_tic + 0;
+                    $contador_preguntas = $contador_preguntas + 1;
+                } elseif ($ti->resultado == 2) {
+                    $resultado_auto_tic = $resultado_auto_tic + 0.5;
+                    $contador_preguntas = $contador_preguntas + 1;
+                } elseif ($ti->resultado == 3) {
+                    $resultado_auto_tic = $resultado_auto_tic + 0.75;
+                    $contador_preguntas = $contador_preguntas + 1;
+                } elseif ($ti->resultado == 4) {
+                    $resultado_auto_tic = $resultado_auto_tic + 1;
+                    $contador_preguntas = $contador_preguntas + 1;
+                }
+            }
+            $resultado_auto_tic = ($resultado_auto_tic / $contador_preguntas) * 100;
+            $resultado_auto_tic = round($resultado_auto_tic, 2);
+
+            //calculo de los resultados autoevaluacion de Pedagogicos
+            $resultado_auto_peda = 0;
+            $contador_preguntas = 0;
+            $j = 1;
+
+            for ($i = 0; $i < $peda_count; $i++) {
+                $pedagogico[$i] = $peda2[$i]->resultado;
+                if ($peda2[$i]->resultado == 1) {
+                    $pedagogico[$i] = 0;
+                } elseif ($peda2[$i]->resultado == 2) {
+                    $pedagogico[$i] = 0.50;
+                } elseif ($peda2[$i]->resultado == 3) {
+                    $pedagogico[$i] = 0.75;
+                } elseif ($peda2[$i]->resultado == 4) {
+                    $pedagogico[$i] = 1;
+                }
+                $pregunta_peda[$i] = 'Pregunta ' . $j;
+                $j++;
+            }
+
+            foreach ($peda2 as $pe) {
+                if ($pe->resultado == 1) {
+                    $resultado_auto_peda = $resultado_auto_peda + 0;
+                    $contador_preguntas = $contador_preguntas + 1;
+                } elseif ($pe->resultado == 2) {
+                    $resultado_auto_peda = $resultado_auto_peda + 0.5;
+                    $contador_preguntas = $contador_preguntas + 1;
+                } elseif ($pe->resultado == 3) {
+                    $resultado_auto_peda = $resultado_auto_peda + 0.75;
+                    $contador_preguntas = $contador_preguntas + 1;
+                } elseif ($pe->resultado == 4) {
+                    $resultado_auto_peda = $resultado_auto_peda + 1;
+                    $contador_preguntas = $contador_preguntas + 1;
+                }
+            }
+            $resultado_auto_peda = ($resultado_auto_peda / $contador_preguntas) * 100;
+            $resultado_auto_peda = round($resultado_auto_peda, 2);
+
+            //calculo de los resultados autoevaluacion de Didacticas
+            $resultado_auto_dida = 0;
+            $contador_preguntas = 0;
+
+            $j = 1;
+
+            for ($i = 0; $i < $dida_count; $i++) {
+                $didactica[$i] = $dida2[$i]->resultado;
+                if ($dida2[$i]->resultado == 1) {
+                    $didactica[$i] = 0;
+                } elseif ($dida2[$i]->resultado == 2) {
+                    $didactica[$i] = 0.50;
+                } elseif ($dida2[$i]->resultado == 3) {
+                    $didactica[$i] = 0.75;
+                } elseif ($dida2[$i]->resultado == 4) {
+                    $didactica[$i] = 1;
+                }
+                $pregunta_dida[$i] = 'Pregunta ' . $j;
+                $j++;
+            }
+
+            foreach ($dida2 as $di) {
+                if ($di->resultado == 1) {
+                    $resultado_auto_dida = $resultado_auto_dida + 0;
+                    $contador_preguntas = $contador_preguntas + 1;
+                } elseif ($di->resultado == 2) {
+                    $resultado_auto_dida = $resultado_auto_dida + 0.5;
+                    $contador_preguntas = $contador_preguntas + 1;
+                } elseif ($di->resultado == 3) {
+                    $resultado_auto_dida = $resultado_auto_dida + 0.75;
+                    $contador_preguntas = $contador_preguntas + 1;
+                } elseif ($di->resultado == 4) {
+                    $resultado_auto_dida = $resultado_auto_dida + 1;
+                    $contador_preguntas = $contador_preguntas + 1;
+                }
+            }
+            $resultado_auto_dida = ($resultado_auto_dida / $contador_preguntas) * 100;
+            $resultado_auto_dida = round($resultado_auto_dida, 2);
+
+            //Calculo de la nota global autoevaluacion
+            $total_auto  = ($resultado_auto_dida + $resultado_auto_peda + $resultado_auto_tic) / 3;
+            $total_auto = round($total_auto, 2);
+        } else {
+            $resultado_auto_dida = 100;
+            $resultado_auto_peda = 100;
+            $resultado_auto_tic = 100;
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //calculo de los resultados coevaluacion de TICS
+        if ($conta_coe != null) {
+            $resultado_coe_tic = 0;
+            $contador_preguntas = 0;
+
+            $j = 1;
+
+            for ($i = 0; $i < $tic_count_coe; $i++) {
+                $tics_coe[$i] = $tic[$i]->resultado;
+                if ($tic[$i]->resultado == 1) {
+                    $tics_coe[$i] = 0;
+                } elseif ($tic[$i]->resultado == 2) {
+                    $tics_coe[$i] = 0.50;
+                } elseif ($tic[$i]->resultado == 3) {
+                    $tics_coe[$i] = 0.75;
+                } elseif ($tic[$i]->resultado == 4) {
+                    $tics_coe[$i] = 1;
+                }
+                $pregunta_tics_coe[$i] = 'Pregunta ' . $j;
+                $j++;
+            }
+
+            foreach ($tic as $ti) {
+                if ($ti->resultado == 1) {
+                    $resultado_coe_tic = $resultado_coe_tic + 0;
+                    $contador_preguntas = $contador_preguntas + 1;
+                } elseif ($ti->resultado == 2) {
+                    $resultado_coe_tic = $resultado_coe_tic + 0.5;
+                    $contador_preguntas = $contador_preguntas + 1;
+                } elseif ($ti->resultado == 3) {
+                    $resultado_coe_tic = $resultado_coe_tic + 0.75;
+                    $contador_preguntas = $contador_preguntas + 1;
+                } elseif ($ti->resultado == 4) {
+                    $resultado_coe_tic = $resultado_coe_tic + 1;
+                    $contador_preguntas = $contador_preguntas + 1;
+                }
+            }
+            $resultado_coe_tic = ($resultado_coe_tic / $contador_preguntas) * 100;
+            $resultado_coe_tic = round($resultado_coe_tic, 2);
+
+            //calculo de los resultados coevaluacion de Pedagogicos
+            $resultado_coe_peda = 0;
+            $contador_preguntas = 0;
+
+            $j = 1;
+
+            for ($i = 0; $i < $peda_count_coe; $i++) {
+                $pedagogico_coe[$i] = $peda[$i]->resultado;
+                if ($peda[$i]->resultado == 1) {
+                    $pedagogico_coe[$i] = 0;
+                } elseif ($peda[$i]->resultado == 2) {
+                    $pedagogico_coe[$i] = 0.50;
+                } elseif ($peda[$i]->resultado == 3) {
+                    $pedagogico_coe[$i] = 0.75;
+                } elseif ($peda[$i]->resultado == 4) {
+                    $pedagogico_coe[$i] = 1;
+                }
+                $pregunta_peda_coe[$i] = 'Pregunta ' . $j;
+                $j++;
+            }
+
+            foreach ($peda as $pe) {
+                if ($pe->resultado == 1) {
+                    $resultado_coe_peda = $resultado_coe_peda + 0;
+                    $contador_preguntas = $contador_preguntas + 1;
+                } elseif ($pe->resultado == 2) {
+                    $resultado_coe_peda = $resultado_coe_peda + 0.5;
+                    $contador_preguntas = $contador_preguntas + 1;
+                } elseif ($pe->resultado == 3) {
+                    $resultado_coe_peda = $resultado_coe_peda + 0.75;
+                    $contador_preguntas = $contador_preguntas + 1;
+                } elseif ($pe->resultado == 4) {
+                    $resultado_coe_peda = $resultado_coe_peda + 1;
+                    $contador_preguntas = $contador_preguntas + 1;
+                }
+            }
+            $resultado_coe_peda = ($resultado_coe_peda / $contador_preguntas) * 100;
+            $resultado_coe_peda = round($resultado_coe_peda, 2);
+
+            //calculo de los resultados coevaluacion de Didacticas
+            $resultado_coe_dida = 0;
+            $contador_preguntas = 0;
+
+            $j = 1;
+
+            for ($i = 0; $i < $dida_count_coe; $i++) {
+                $didactica_coe[$i] = $dida[$i]->resultado;
+                if ($dida[$i]->resultado == 1) {
+                    $didactica_coe[$i] = 0;
+                } elseif ($dida[$i]->resultado == 2) {
+                    $didactica_coe[$i] = 0.50;
+                } elseif ($dida[$i]->resultado == 3) {
+                    $didactica_coe[$i] = 0.75;
+                } elseif ($dida[$i]->resultado == 4) {
+                    $didactica_coe[$i] = 1;
+                }
+                $pregunta_dida_coe[$i] = 'Pregunta ' . $j;
+                $j++;
+            }
+
+            foreach ($dida as $di) {
+                if ($di->resultado == 1) {
+                    $resultado_coe_dida = $resultado_coe_dida + 0;
+                    $contador_preguntas = $contador_preguntas + 1;
+                } elseif ($di->resultado == 2) {
+                    $resultado_coe_dida = $resultado_coe_dida + 0.5;
+                    $contador_preguntas = $contador_preguntas + 1;
+                } elseif ($di->resultado == 3) {
+                    $resultado_coe_dida = $resultado_coe_dida + 0.75;
+                    $contador_preguntas = $contador_preguntas + 1;
+                } elseif ($di->resultado == 4) {
+                    $resultado_coe_dida = $resultado_coe_dida + 1;
+                    $contador_preguntas = $contador_preguntas + 1;
+                }
+            }
+            $resultado_coe_dida = ($resultado_coe_dida / $contador_preguntas) * 100;
+            $resultado_coe_dida = round($resultado_coe_dida, 2);
+
+            //Calculo de la nota global coevaluacion
+            $total_coe  = ($resultado_coe_dida + $resultado_coe_peda + $resultado_coe_tic) / 3;
+            $total_coe = round($total_coe, 2);
+        } else {
+            $resultado_coe_dida = 100;
+            $resultado_coe_peda = 100;
+            $resultado_coe_tic = 100;
+        }
+        $cursos = curso::all();
+
+
+
 
         return view('recomendaciones',  compact(
+            'id',
             'name',
             'cedula',
             'email',
-            'fechaActual',
             'imagen',
-            'tics',
-            'peda',
-            'dida'
+            'resultado_auto_tic',
+            'resultado_auto_peda',
+            'resultado_auto_dida',
+            'resultado_coe_tic',
+            'resultado_coe_peda',
+            'resultado_coe_dida',    
+            'total_coe',
+            'total_auto',
+            'cursos'
         ));
     }
 }

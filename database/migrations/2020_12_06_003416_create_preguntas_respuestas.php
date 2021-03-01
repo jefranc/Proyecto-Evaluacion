@@ -23,6 +23,14 @@ class CreatePreguntasRespuestas extends Migration
             $table->timestamps();
         });
 
+        //table cursos
+        Schema::create('cursos', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('curso', 250);
+            $table->string('criterio', 50)->nullable();
+            $table->timestamps();
+        });
+
         //tabla de comprobacion de coevaluaciones
         Schema::create('comprobaciones', function (Blueprint $table) {
             $table->bigIncrements('id');
