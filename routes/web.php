@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/preguntas_coe','Preguntas_CoeController@index')->name('preguntas_coe');
         Route::get('/criterios','CriteriosController@index')->name('criterios');
         Route::get('/pdf2', 'Pdf2Controller@PDF2')->name('descargarPDF2');
+        Route::resource('controlador_evaluaciones', 'Controlador_EvaluacionesController');
         Route::resource('editar_usuario', 'Editar_UsuarioController');  
         Route::resource('resultados_todos', 'Resultados_TodosController');  
         Route::resource('resultado_docente', 'Resultado_DocenteController'); 
