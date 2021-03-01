@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Ciclo;
+use App\comprobacione;
 
 class Controlador_EvaluacionesController extends Controller
 {
@@ -78,8 +79,28 @@ class Controlador_EvaluacionesController extends Controller
      */
     public function update(Request $request, $tipo)
     {
-        if($tipo == 'todos'){
-            
+        if($tipo == 'auto'){
+            $name = auth()->user()->name;
+            $cedula = auth()->user()->cedula;
+            $email = auth()->user()->email;
+            $fechaActual = date('d/m/Y');
+            $imagen = auth()->user()->imagen;
+            $tipo = 'auto';
+
+            $docentes = \DB::select('select * from users ORDER BY apellido');
+        return view('controlador_evaluaciones',  compact('name', 'cedula', 'email', 'fechaActual', 'imagen', 'docentes', 'tipo'));
+        }
+
+        if($tipo == 'coe'){
+            $name = auth()->user()->name;
+            $cedula = auth()->user()->cedula;
+            $email = auth()->user()->email;
+            $fechaActual = date('d/m/Y');
+            $imagen = auth()->user()->imagen;
+            $tipo = 'coe';
+            $compro = \DB::select('select * from comprobaciones');
+            $docentes = \DB::select('select * from users ORDER BY apellido');
+        return view('controlador_evaluaciones',  compact('name', 'cedula', 'email', 'fechaActual', 'imagen', 'docentes', 'tipo', 'compro'));
         }
     }
 

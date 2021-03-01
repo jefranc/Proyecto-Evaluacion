@@ -2,7 +2,7 @@
 @section('title', 'Evaluacion')
 @section('content')
 
-@if($comprobacion == null)
+@if($comprobacion->estado == 0)
 <header class="title">
     <div class="col-title">
         <h1>
@@ -167,15 +167,12 @@
                 ?>
                 @endforeach
 
-
-
-
             </tbody>
         </table>
         <div class="input-group input-group-lg">
             <h2>Observaciones:</h2>
             <div class="input-group input-group-lg">
-                <textarea name="observaciones" rows="5" cols="40" placeholder="Escriba sus observaciones aqui..."></textarea>
+                <textarea name="observaciones" rows="5" cols="40" placeholder="Escriba sus observaciones aqui..." style="width:70%"></textarea>
             </div>
         </div>
         <input type="hidden" name="cedula" id="cedula" value="{{ $cedula }}" />

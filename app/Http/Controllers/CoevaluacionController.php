@@ -156,12 +156,13 @@ class CoevaluacionController extends Controller
                 ])
                 ->update(['observaciones' => $request->observaciones]);
 
+                \DB::table('comprobaciones')
+                ->where([
+                    ['ci_coevaluador_id', '=', auth()->user()->cedula],
+                    ['evaluado', '=', $ced]
+                ])
+                ->update(['estado' => '1']);
 
-            $comprobar = new Comprobacione;
-            $comprobar->ci_coevaluador_id = auth()->user()->cedula;
-            $comprobar->evaluado = $ced;
-            $comprobar->estado = '1';
-            $comprobar->save();
             return redirect()->route('coevaluacion_lista.show', $user->id);
         }
     }

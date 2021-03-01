@@ -3,9 +3,42 @@
 @section('title', 'Lista de Docentes')
 
 @section('content')
+<!-- Tablas Todos -->
 @if($tipo == 'todos')
+<?php
+$tipo2 = 'auto';
+$tipo3 = 'coe';
+?>
 <div class="form-group">
-<button class="btncedula btn btn-info" data-id="{{ $docente->cedula }}" value="Editar">Editar Usuario</button>
+    <form action="{{ route('controlador_evaluaciones.update', $tipo2) }}" method="POST">
+        @csrf
+        @method('put')
+        <button class="btncedula btn btn-info" " value=" Editar">Docentes que faltan por autoevaluarse</button>
+    </form>
+    <form action="{{ route('controlador_evaluaciones.update', $tipo3) }}" method="POST">
+        @csrf
+        @method('put')
+        <button class="btncedula btn btn-info" " value=" Editar">Docentes que faltan por coevaluar</button>
+    </form>
+</div>
+
+<!-- Tablas Falta por autoevaluar -->
+@elseif($tipo == 'auto')
+<?php
+$tipo2 = 'auto';
+$tipo3 = 'coe';
+?>
+<div class="form-group">
+    <form action="{{ route('controlador_evaluaciones.update', $tipo2) }}" method="POST">
+        @csrf
+        @method('put')
+        <button class="btncedula btn btn-info" " value=" Editar">Docentes que faltan por autoevaluarse</button>
+    </form>
+    <form action="{{ route('controlador_evaluaciones.update', $tipo3) }}" method="POST">
+        @csrf
+        @method('put')
+        <button class="btncedula btn btn-info" " value=" Editar">Docentes que faltan por coevaluar</button>
+    </form>
     <input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar Docente...">
 </div>
 <div class="table-responsive">
@@ -16,23 +49,78 @@
                 <th class="column-title">Nombre</th>
                 <th class="column-title">Cedula</th>
                 <th class="column-title">Correo Institucional</th>
-                <th colspan="2"></th>
-                <th class="bulk-actions" colspan="7">
-                    <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                </th>
+                <th class="column-title">Estado</th>
             </tr>
         </thead>
         <tbody>
-            <form action="{{ route('editar_usuario.index') }}" method="GET">               
+            <form action="{{ route('editar_usuario.index') }}" method="GET">
                 @foreach ($docentes as $docente)
                 <tr class="even pointer">
+                    @if($docente->auto == '0')
                     <td class=" ">{{ $docente->apellido }}</td>
                     <td class=" ">{{ $docente->name }}</td>
                     <td class=" ">{{ $docente->cedula }}</td>
                     <td class=" ">{{ $docente->email }}</td>
-                    <td class=" last">
-                        <button class="btncedula btn btn-info" data-id="{{ $docente->cedula }}" value="Editar">Editar Usuario</button>
-                    </td>
+                    <td class=" ">Falta Autoevaluarse</td>
+                    @endif
+                </tr>
+                @endforeach
+                <input type="hidden" name="cedula" id="cedula" value="{{ $docente->cedula }}" />
+            </form>
+        </tbody>
+    </table>
+</div>
+<!-- Tablas Falta por coevaluar -->
+@elseif($tipo == 'coe')
+<?php
+$tipo2 = 'auto';
+$tipo3 = 'coe';
+?>
+<div class="form-group">
+    <form action="{{ route('controlador_evaluaciones.update', $tipo2) }}" method="POST">
+        @csrf
+        @method('put')
+        <button class="btncedula btn btn-info" " value=" Editar">Docentes que faltan por autoevaluarse</button>
+    </form>
+    <form action="{{ route('controlador_evaluaciones.update', $tipo3) }}" method="POST">
+        @csrf
+        @method('put')
+        <button class="btncedula btn btn-info" " value=" Editar">Docentes que faltan por coevaluar</button>
+    </form>
+    <input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar Docente...">
+</div>
+<div class="table-responsive">
+    <table class="table table-striped jambo_table bulk_action" id="mytable">
+        <thead>
+            <tr class="headings">
+                <th class="column-title">Apellido</th>
+                <th class="column-title">Nombre</th>
+                <th class="column-title">Cedula</th>
+                <th class="column-title">Correo Institucional</th>
+                <th class="column-title">Coevaluador</th>
+                <th class="column-title">Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <form action="{{ route('editar_usuario.index') }}" method="GET">
+                @foreach ($compro as $compr)
+                <tr class="even pointer">
+                    @if($compr->estado == 0)
+                    @foreach($docentes as $docente)
+                    @if($compr->evaluado == $docente->cedula)
+                    <td class=" ">{{ $docente->apellido }}</td>
+                    <td class=" ">{{ $docente->name }}</td>
+                    <td class=" ">{{ $docente->cedula }}</td>
+                    <td class=" ">{{ $docente->email }}</td>
+                    @foreach($docentes as $docent)
+                    @if($compr->ci_coevaluador_id == $docent->cedula)
+                    <td class=" ">{{ $docent->apellido }} {{ $docent->name }}</td>
+                    <td class=" ">Falta Coevaluar</td>
+                    @endif
+                    @endforeach
+                    @endif
+                    @endforeach
+                    @endif
                 </tr>
                 @endforeach
                 <input type="hidden" name="cedula" id="cedula" value="{{ $docente->cedula }}" />

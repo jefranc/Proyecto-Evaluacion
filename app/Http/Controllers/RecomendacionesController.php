@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Ciclo;
+use App\Respuesta;
+use App\Categoria;
+use App\materia_user;
 
 class RecomendacionesController extends Controller
 {

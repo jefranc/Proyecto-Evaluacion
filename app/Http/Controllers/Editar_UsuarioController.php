@@ -272,20 +272,14 @@ class Editar_UsuarioController extends Controller
 
             if ($contador != null && !empty($request->materia)) {                                                //comprobando si existen valores iguales en la BD
                 materia_user::where('docente', $request->cedula)->delete();
-                comprobacione_auto::where('docente', $request->cedula)->delete();
                 $var = count($request->materia);
                 foreach ($materias as $materias) {
                     $mate = new materia_user();
-                    $mate2 = new comprobacione_auto();
                     for ($i = 0; $i < $var; $i++) {
                         if ($materias->materia == $request->materia[$i]) {
                             $mate->materias_id = $materias->id;
                             $mate->docente = $request->cedula;
                             $mate->save();
-                            $mate2->docente = $request->cedula;
-                            $mate2->materia = $materias->materia;
-                            $mate2->estado = '0';
-                            $mate2->save();
                         }
                     }
                 }
@@ -294,16 +288,11 @@ class Editar_UsuarioController extends Controller
                 $var = count($request->materia);
                 foreach ($materias as $materias) {
                     $mate = new materia_user();
-                    $mate2 = new comprobacione_auto();
                     for ($i = 0; $i < $var; $i++) {
                         if ($materias->materia == $request->materia[$i]) {
                             $mate->materias_id = $materias->id;
                             $mate->docente = $request->cedula;
                             $mate->save();
-                            $mate2->docente = $request->cedula;
-                            $mate2->materia = $materias->materia;
-                            $mate2->estado = '0';
-                            $mate2->save();
                         }
                     }
                 }

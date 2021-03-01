@@ -43,7 +43,7 @@
                     <td class=" ">{{ $docente->cedula }}</td>
                     <td class=" ">{{ $docente->email }}</td>
                     <td class=" last">
-                        <center><button class="btncedula btn-outline-danger" data-id="{{ $docente->cedula }}" value="Editar">Eliminar</button>
+                        <center><button class="btncedula btn-outline-danger" data-id="{{ $docente->cedula }}" value="Editar">Eliminar Asignación</button>
                     </td>
                     @elseif($docente->evaluador3 == $cedula)
                     <td class=" ">{{ $docente->apellido }}</td>
@@ -51,7 +51,7 @@
                     <td class=" ">{{ $docente->cedula }}</td>
                     <td class=" ">{{ $docente->email }}</td>
                     <td class=" last">
-                        <center><button class="btncedula btn-outline-danger" data-id="{{ $docente->cedula }}" value="Editar">Eliminar</button>
+                        <center><button class="btncedula btn-outline-danger" data-id="{{ $docente->cedula }}" value="Editar">Eliminar Asignación</button>
                     </td>
                     @elseif($docente->evaluador4 == $cedula)
                     <td class=" ">{{ $docente->apellido }}</td>
@@ -59,7 +59,7 @@
                     <td class=" ">{{ $docente->cedula }}</td>
                     <td class=" ">{{ $docente->email }}</td>
                     <td class=" last">
-                        <center><button class="btncedula btn-outline-danger" data-id="{{ $docente->cedula }}" value="Editar">Eliminar</button>
+                        <center><button class="btncedula btn-outline-danger" data-id="{{ $docente->cedula }}" value="Editar">Eliminar Asignación</button>
                     </td>
                     @elseif($docente->evaluador5 == $cedula)
                     <td class=" ">{{ $docente->apellido }}</td>
@@ -67,7 +67,7 @@
                     <td class=" ">{{ $docente->cedula }}</td>
                     <td class=" ">{{ $docente->email }}</td>
                     <td class=" last">
-                        <center><button class="btncedula btn-outline-danger" data-id="{{ $docente->cedula }}" value="Editar">Eliminar</button>
+                        <center><button class="btncedula btn-outline-danger" data-id="{{ $docente->cedula }}" value="Editar">Eliminar Asignación</button>
                     </td>
                     @endif
                 </tr>

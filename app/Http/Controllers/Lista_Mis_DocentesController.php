@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Ciclo;
+use App\comprobacione;
 
 class Lista_Mis_DocentesController extends Controller
 {
@@ -108,14 +109,20 @@ class Lista_Mis_DocentesController extends Controller
 
             if ($evaluador1->evaluador1 == $ced_coe) {
                 $evaluador1->evaluador1 = null;
+
+                comprobacione::where([['ci_coevaluador_id', $ced_coe], ['evaluado', $evaluador1->cedula]])->delete();
             } elseif ($evaluador1->evaluador2 == $ced_coe) {
                 $evaluador1->evaluador2 = null;
+                comprobacione::where([['ci_coevaluador_id', $ced_coe], ['evaluado', $evaluador1->cedula]])->delete();
             } elseif ($evaluador1->evaluador3 == $ced_coe) {
                 $evaluador1->evaluador3 = null;
+                comprobacione::where([['ci_coevaluador_id', $ced_coe], ['evaluado', $evaluador1->cedula]])->delete();
             } elseif ($evaluador1->evaluador4 == $ced_coe) {
                 $evaluador1->evaluador4 = null;
+                comprobacione::where([['ci_coevaluador_id', $ced_coe], ['evaluado', $evaluador1->cedula]])->delete();
             } elseif ($evaluador1->evaluador5 == $ced_coe) {
                 $evaluador1->evaluador5 = null;
+                comprobacione::where([['ci_coevaluador_id', $ced_coe], ['evaluado', $evaluador1->cedula]])->delete();
             }
             $evaluador1->save();
         }
@@ -128,18 +135,47 @@ class Lista_Mis_DocentesController extends Controller
 
                 if ($evaluador1->evaluador1 == null) {
                     $evaluador1->evaluador1 = $ced_coe;
+
+                    $comprobar = new Comprobacione;
+                    $comprobar->ci_coevaluador_id = $ced_coe;
+                    $comprobar->evaluado = $evaluador1->cedula;
+                    $comprobar->estado = '0';
+                    $comprobar->save();
                 } elseif ($evaluador1->evaluador2 == null) {
                     $evaluador1->evaluador2 = $ced_coe;
+
+                    $comprobar = new Comprobacione;
+                    $comprobar->ci_coevaluador_id = $ced_coe;
+                    $comprobar->evaluado = $evaluador1->cedula;
+                    $comprobar->estado = '0';
+                    $comprobar->save();
                 } elseif ($evaluador1->evaluador3 == null) {
                     $evaluador1->evaluador3 = $ced_coe;
+
+                    $comprobar = new Comprobacione;
+                    $comprobar->ci_coevaluador_id = $ced_coe;
+                    $comprobar->evaluado = $evaluador1->cedula;
+                    $comprobar->estado = '0';
+                    $comprobar->save();
                 } elseif ($evaluador1->evaluador4 == null) {
                     $evaluador1->evaluador4 = $ced_coe;
+
+                    $comprobar = new Comprobacione;
+                    $comprobar->ci_coevaluador_id = $ced_coe;
+                    $comprobar->evaluado = $evaluador1->cedula;
+                    $comprobar->estado = '0';
+                    $comprobar->save();
                 } elseif ($evaluador1->evaluador5 == null) {
                     $evaluador1->evaluador5 = $ced_coe;
+
+                    $comprobar = new Comprobacione;
+                    $comprobar->ci_coevaluador_id = $ced_coe;
+                    $comprobar->evaluado = $evaluador1->cedula;
+                    $comprobar->estado = '0';
+                    $comprobar->save();
                 }
                 $evaluador1->save();
             }
-            
         }
 
         return redirect()->route('lista_mis_docentes.show', $ced_coe);
