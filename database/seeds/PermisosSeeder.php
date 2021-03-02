@@ -75,32 +75,38 @@ class PermisosSeeder extends Seeder
         //creacion de los cursos
         $cursos = curso::insert([
             'curso' => 'Tics en la educación',
-            'criterio' => 'Tics'
+            'criterio' => 'Tics',
+            'imagen' => 'Imagenes/TICS.png'
         ]);
         $cursos = curso::insert([
             'curso' => 'Didáctica',
             'criterio' => 'Didáctica',
-            'imagen' => 'Imagenes\DIDACTICA.png'
+            'imagen' => 'Imagenes/DIDACTICA.png'
         ]);
         $cursos = curso::insert([
             'curso' => 'Pedagogía',
-            'criterio' => 'Pedagogía'
+            'criterio' => 'Pedagogía',
+            'imagen' => 'Imagenes/PEDAGOGIA.png'
         ]);
         $cursos = curso::insert([
             'curso' => 'Metodología de aprendizaje', 
-            'criterio' => 'Pedagogía'
+            'criterio' => 'Pedagogía',
+            'imagen' => 'Imagenes/Metodología_de_aprendizaje.png'
         ]);
         $cursos = curso::insert([
             'curso' => 'Diseño de rúbrica ', 
-            'criterio' => 'Didáctica'
+            'criterio' => 'Didáctica',
+            'imagen' => 'Imagenes/Diseño_de_Rubrica.png'
         ]);
         $cursos = curso::insert([
             'curso' => 'Epistemología',
-            'criterio' => 'Pedagogía'
+            'criterio' => 'Pedagogía',
+            'imagen' => 'Imagenes/Epistemología.png'
         ]);
         $cursos = curso::insert([
             'curso' => 'Plataforma Microsoft Office 365',
-            'criterio' => 'Tics'
+            'criterio' => 'Tics',
+            'imagen' => 'Imagenes/Plataforma_Microsft_Office_365.png'
         ]);
         
 
