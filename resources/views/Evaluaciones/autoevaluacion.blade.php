@@ -64,7 +64,7 @@
                     <tr>
                         <td colspan="5">
                             <h5>
-                                <center>Pedagógica
+                                <center><b>Pedagógica</b>
                             </h5>
                         </td>
                     </tr>
@@ -85,7 +85,7 @@
                     <tr>
                         <td colspan="5">
                             <h5>
-                                <center>Didáctica
+                                <center><b>Didáctica</b>
                             </h5>
                         </td>
                     </tr>
@@ -106,7 +106,7 @@
                     <tr>
                         <td colspan="5">
                             <h5>
-                                <center>TICS
+                                <center><b>TICS</b>
                             </h5>
                         </td>
                     </tr>

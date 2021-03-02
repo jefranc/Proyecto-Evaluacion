@@ -1,8 +1,15 @@
 @extends('base')
 
-@section('title', 'Lista de Docentes')
+@section('title', 'Editar Docentes')
 
 @section('content')
+<header class="title">
+    <div class="col-title">
+        <h1>
+            <center> Editar Docente
+        </h1>
+    </div>
+</header>
 <div class="form-group">
     <input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar Docente...">
 </div>
@@ -21,7 +28,7 @@
             </tr>
         </thead>
         <tbody>
-            <form action="{{ route('editar_usuario.index') }}" method="GET">               
+            <form action="{{ route('editar_usuario.index') }}" method="GET">
                 @foreach ($docentes as $docente)
                 <tr class="even pointer">
                     <td class=" ">{{ $docente->apellido }}</td>

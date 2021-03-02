@@ -9,6 +9,13 @@
 $tipo2 = 'auto';
 $tipo3 = 'coe';
 ?>
+<header class="title">
+    <div class="col-title">
+        <h1>
+            <center> Seguimiento de Evaluaciones
+        </h1>
+    </div>
+</header>
 <div class="form-group">
     <form action="{{ route('controlador_evaluaciones.update', $tipo2) }}" method="POST">
         @csrf
@@ -28,6 +35,16 @@ $tipo3 = 'coe';
 $tipo2 = 'auto';
 $tipo3 = 'coe';
 ?>
+<header class="title">
+    <div class="col-title">
+        <h1>
+            <center> Seguimiento de Evaluaciones
+        </h1>
+        <h3>
+            <center> Listado de autoevaluación
+        </h3>
+    </div>
+</header>
 <div class="form-group">
     <form action="{{ route('controlador_evaluaciones.update', $tipo2) }}" method="POST">
         @csrf
@@ -62,6 +79,12 @@ $tipo3 = 'coe';
                     <td class=" ">{{ $docente->cedula }}</td>
                     <td class=" ">{{ $docente->email }}</td>
                     <td class=" ">Falta Autoevaluarse</td>
+                    @else
+                    <td class=" ">{{ $docente->apellido }}</td>
+                    <td class=" ">{{ $docente->name }}</td>
+                    <td class=" ">{{ $docente->cedula }}</td>
+                    <td class=" ">{{ $docente->email }}</td>
+                    <td class=" ">Autoevaluado</td>
                     @endif
                 </tr>
                 @endforeach
@@ -75,6 +98,16 @@ $tipo3 = 'coe';
 $tipo2 = 'auto';
 $tipo3 = 'coe';
 ?>
+<header class="title">
+    <div class="col-title">
+        <h1>
+            <center> Seguimiento de Evaluaciones
+        </h1>
+        <h3>
+            <center> Listado de coevaluación de pares academicos
+        </h3>
+    </div>
+</header>
 <div class="form-group">
     <form action="{{ route('controlador_evaluaciones.update', $tipo2) }}" method="POST">
         @csrf

@@ -78,7 +78,7 @@
                         <th class="column-title">No cumple: 1</th>
                         <th class="column-title">En proceso: 2</th>
                         <th class="column-title">Satisfactorio: 3</th>
-                        <th class="column-title">Destacado: 1</th>
+                        <th class="column-title">Destacado: 4</th>
                     </tr>
                 </thead>
             </table>
@@ -107,7 +107,7 @@
                 <tr>
                     <td colspan="5">
                         <h5>
-                            <center>Pedagógica
+                            <center><b>Pedagógica</b>
                         </h5>
                     </td>
                 </tr>

@@ -95,6 +95,10 @@ class PermisosSeeder extends Seeder
         ]);
         $cursos = curso::insert([
             'curso' => 'Epistemología',
+            'criterio' => 'Pedagogía'
+        ]);
+        $cursos = curso::insert([
+            'curso' => 'Plataforma Microsoft Office 365',
             'criterio' => 'Tics'
         ]);
         

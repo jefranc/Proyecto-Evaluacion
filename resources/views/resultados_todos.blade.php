@@ -3,6 +3,13 @@
 @section('title', 'Resultados')
 
 @section('content')
+<header class="title">
+    <div class="col-title">
+        <h1>
+            <center> Lista de resultados de docentes
+        </h1>
+    </div>
+</header>
 <div class="form-group">
     <input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar Docente...">
 </div>
