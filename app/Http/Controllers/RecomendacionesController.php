@@ -340,6 +340,7 @@ class RecomendacionesController extends Controller
             $resultado_coe_tic = 100;
         }
         $cursos = curso::all();
+        $didactica = 'Imagenes\DIDACTICA.png';
 
 
 
@@ -358,7 +359,8 @@ class RecomendacionesController extends Controller
             'resultado_coe_dida',    
             'total_coe',
             'total_auto',
-            'cursos'
+            'cursos',
+            'didactica'
         ));
     }
 }
