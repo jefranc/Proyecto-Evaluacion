@@ -28,7 +28,7 @@
     <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Autoevaluacion Ciclo: {{ $ciclos }}</h2>
+                <h2>Autoevaluación Ciclo: {{ $ciclos }}</h2>
                 <div class="pull-right">
                     @if($total_auto != null)
                     <form action="{{ route('descargarPDF') }}" method="GET">
@@ -157,7 +157,7 @@
     <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">
             <div class="x_title">
-                <h2>CoEvaluacion Ciclo: {{ $ciclos }}</h2>
+                <h2>CoEvaluación Ciclo: {{ $ciclos }}</h2>
                 <div class="clearfix"></div>
             </div>
             <form action="{{ route('resultados.show', $ciclos) }}" method="GET">

@@ -28,7 +28,7 @@
             @endcan
             @can('ver_docentes')
             <li><a href="{{route('docentes')}}"> Editar Información de los Usuarios</a></li>
-            <li><a href="{{ route('controlador_evaluaciones.index') }}"> Controlador de Evaluaciones</a></li>
+            <li><a href="{{ route('controlador_evaluaciones.index') }}"> Seguimiento de Evaluaciones</a></li>
             @endcan
             @can('dar_permisos')
             <li><a href="{{ route('docentes') }}"> Editar Información de los Usuarios</a></li>

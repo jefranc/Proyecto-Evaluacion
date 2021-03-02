@@ -36,7 +36,7 @@
                         <th class="column-title">No cumple: 1</th>
                         <th class="column-title">En proceso: 2</th>
                         <th class="column-title">Satisfactorio: 3</th>
-                        <th class="column-title">Destacado: 1</th>
+                        <th class="column-title">Destacado: 4</th>
                     </tr>
                 </thead>
             </table>
@@ -126,7 +126,7 @@
                 </tbody>
             </table>
             <input type="hidden" name="cedula" id="cedula" value="{{ $cedula }}" />
-            <button class="btn btn-info" style="float: right">Guardar</button>
+            <button id="open" class="btn btn-info" style="float: right">Guardar</button>
         </form>
     </body>
 </div>
@@ -153,4 +153,15 @@
         console.log("liasto!");
     });
 </script>
+<script>
+      function abrirNuevoTab(url) {
+        // Abrir nuevo tab
+        var win = window.open(url, '_blank');
+        // Cambiar el foco al nuevo tab (punto opcional)
+        win.focus();
+      }
+      $('#open').click(function(){
+        abrirNuevoTab('https://forms.office.com/Pages/ResponsePage.aspx?id=53YPJQVh40KC0L58RgrqWRTOjlmffnVHjeQN4hD3CJBUQUtTWTVYTTlaSFNMUlNVN0ZWVTc5Rk1XVi4u')
+      })
+    </script>
 @endsection

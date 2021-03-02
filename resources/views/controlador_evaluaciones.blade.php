@@ -119,6 +119,17 @@ $tipo3 = 'coe';
                     @endforeach
                     @endif
                     @endforeach
+                    @else
+                    <td class=" ">{{ $docente->apellido }}</td>
+                    <td class=" ">{{ $docente->name }}</td>
+                    <td class=" ">{{ $docente->cedula }}</td>
+                    <td class=" ">{{ $docente->email }}</td>
+                    @foreach($docentes as $docent)
+                    @if($compr->ci_coevaluador_id == $docent->cedula)
+                    <td class=" ">{{ $docent->apellido }} {{ $docent->name }}</td>
+                    <td class=" ">Coevaluado</td>
+                    @endif
+                    @endforeach
                     @endif
                 </tr>
                 @endforeach
