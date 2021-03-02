@@ -79,7 +79,8 @@ class PermisosSeeder extends Seeder
         ]);
         $cursos = curso::insert([
             'curso' => 'Didáctica',
-            'criterio' => 'Didáctica'
+            'criterio' => 'Didáctica',
+            'imagen' => 'Imagenes\DIDACTICA.png'
         ]);
         $cursos = curso::insert([
             'curso' => 'Pedagogía',

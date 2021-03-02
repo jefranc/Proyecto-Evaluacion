@@ -28,6 +28,7 @@ class CreatePreguntasRespuestas extends Migration
             $table->bigIncrements('id');
             $table->string('curso', 250);
             $table->string('criterio', 50)->nullable();
+            $table->string('imagen', 50)->nullable();
             $table->timestamps();
         });
 
