@@ -26,7 +26,7 @@ class Coevaluacion_ListaController extends Controller
         $fechaActual = date('d/m/Y');
         $imagen = auth()->user()->imagen;
 
-        $comprobacion = Comprobacione::all();
+        $comprobacion = \DB::select('select * from comprobaciones');
         
         $preguntas = Pregunta::where('tipo', 'coevaluacion')->get();
         $ciclo = Ciclo::where('ciclo_actual', '2')->get();
