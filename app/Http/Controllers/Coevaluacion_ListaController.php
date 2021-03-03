@@ -26,7 +26,6 @@ class Coevaluacion_ListaController extends Controller
         $fechaActual = date('d/m/Y');
         $imagen = auth()->user()->imagen;
 
-        //$docentes = User::where('evaluador', $cedula)->get();
         $comprobacion = Comprobacione::all();
         
         $preguntas = Pregunta::where('tipo', 'coevaluacion')->get();
@@ -93,7 +92,7 @@ class Coevaluacion_ListaController extends Controller
         $docentes = User::where('evaluador1', $cedula)->orWhere('evaluador2', $cedula)
         ->orWhere('evaluador3', $cedula)->orWhere('evaluador4', $cedula)->orWhere('evaluador4', $cedula)
         ->orWhere('evaluador5', $cedula)->get();
-        $comprobacion = Comprobacione::all();
+        $comprobacion = \DB::select('select * from comprobaciones');
 
  
 
