@@ -100,10 +100,13 @@ class CoevaluacionController extends Controller
 
 
             //comprueba si ya este coevaluador realizo la prueba al docente
-            $comprobacion = Comprobacione::where([
+            $comprobacion = \DB::table('comprobaciones')->where('ci_coevaluador_id', auth()->user()->cedula)
+            ->where('evaluado', '=', $cedula)->first();
+
+            /*$comprobacion = Comprobacione::where([
                 ['ci_coevaluador_id', '=', auth()->user()->cedula],
                 ['evaluado', '=', $cedula]
-            ])->first();
+            ])->first();*/
 
             return view('Evaluaciones/coevaluacion',  compact(
                 'id',
