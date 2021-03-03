@@ -31,6 +31,7 @@
                 <th class="column-title">Nombre</th>
                 <th class="column-title">Cedula</th>
                 <th class="column-title">Correo Institucional</th>
+                <th class="column-title">Estado</th>
                 <th class="column-title no-link last"><span class="nobr">Acciones</span>
                 </th>
                 <th class="bulk-actions" colspan="7">
@@ -51,6 +52,17 @@
                     <td class=" ">{{ $docente->name }}</td>
                     <td class=" ">{{ $docente->cedula }} </td>
                     <td class=" ">{{ $docente->email }}</td>
+                    @foreach ($comprobacion as $comprobacio)
+                    @if($comprobacio->ci_coevaluador_id == $cedula)
+                    @if($comprobacio->evaluado == $docente->cedula)
+                    @if($comprobacio->estado == 1)
+                    <td class=" ">Evaluado</td>
+                    @else
+                    <td class=" ">Por evaluar</td>
+                    @endif
+                    @endif
+                    @endif
+                    @endforeach
                     <?php
                     $ced = $docente->cedula;
                     ?>
