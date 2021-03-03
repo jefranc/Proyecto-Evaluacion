@@ -27,7 +27,7 @@
                     <div class="col-md-3 col-sm-3  profile_left">
                         <div class="profile_img">
                             <div id="crop-avatar">
-                                <img class="img-responsive avatar-view" src={{ $imagen }} alt="Avatar" title="Change the avatar">
+                                <img class="img-responsive avatar-view" src={{  URL::asset($imagen) }} alt="Avatar" title="Change the avatar">
                             </div>
                         </div>
                         <h3>{{ $name }} {{ $apellido }}</h3>
