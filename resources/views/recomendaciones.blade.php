@@ -10,8 +10,9 @@
     <div class="col-md-12 col-sm-12  ">
         <div class="x_panel">
             <div class="x_title">
-                <center><h1>Cursos de capacitación para docentes</h1>
-                <div class="clearfix"></div>
+                <center>
+                    <h1>Cursos de capacitación para docentes</h1>
+                    <div class="clearfix"></div>
             </div>
             <div class="x_content">
                 <div class="row">
@@ -39,10 +40,12 @@
                                         </div>
                                         <div class="caption">
                                             <center>
-                                                <p>{{ $curso->curso }} </p>
-                                                <?php
-                                                $comp = 1;
-                                                ?>
+                                                <font face="Comic Sans MS,Arial,Verdana">
+                                                    <p>{{ $curso->curso }} </p>
+                                                    <font>
+                                                        <?php
+                                                        $comp = 1;
+                                                        ?>
                                         </div>
                                     </div>
                                 </div>
@@ -63,10 +66,12 @@
                                             </div>
                                             <div class="caption">
                                                 <center>
-                                                    <p>{{ $curso->curso }} </p>
-                                                    <?php
-                                                    $comp = 1;
-                                                    ?>
+                                                    <font face="Comic Sans MS,Arial,Verdana">
+                                                        <p>{{ $curso->curso }} </p>
+                                                        <font>
+                                                            <?php
+                                                            $comp = 1;
+                                                            ?>
                                             </div>
                                         </div>
                                     </div>
@@ -87,10 +92,12 @@
                                                 </div>
                                                 <div class="caption">
                                                     <center>
-                                                        <p>{{ $curso->curso }} </p>
-                                                        <?php
-                                                        $comp = 1;
-                                                        ?>
+                                                        <font face="Comic Sans MS,Arial,Verdana">
+                                                            <p>{{ $curso->curso }} </p>
+                                                            <font>
+                                                                <?php
+                                                                $comp = 1;
+                                                                ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -131,7 +138,9 @@
                                                     </div>
                                                     <div class="caption">
                                                         <center>
-                                                            <p>{{ $array_i }} </p>
+                                                            <font face="Comic Sans MS,Arial,Verdana">
+                                                                <p>{{ $array_i }} </p>
+                                                                <font>
                                                     </div>
                                                 </div>
                                             </div>
@@ -154,7 +163,9 @@
                                                     </div>
                                                     <div class="caption">
                                                         <center>
-                                                            <p>{{ $curso->curso }} </p>
+                                                            <font face="Comic Sans MS,Arial,Verdana">
+                                                                <p>{{ $curso->curso }} </p>
+                                                                <font>
                                                     </div>
                                                 </div>
                                             </div>
