@@ -55,12 +55,15 @@
                             <form action="{{ route('editar_perfil.store' )}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group pull-center">
-                                    <input type="file" class="btn btn-success col-md-5 col-sm-5" name="file" id={{ $id }} accept="image/*">
+                                    <input type="file" class="btn btn-success col-md-5 col-sm-5" style="width:100%" name="file" id={{ $id }} accept="image/*">
                                     @error('file')
                                     <small class="text-danger">{{$message}}</small>
                                     @enderror
                                 </div>
+                                <div>
                                 <button type="submit" class="btn btn-primary">Subir Imagen</button>
+                                </div>
+                                
                             </form>
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">

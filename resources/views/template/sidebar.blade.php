@@ -41,7 +41,7 @@
             <li><a> Manejo de Información <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="{{route('ciclos.index')}}"> Ciclos</a></li>
-                    <li><a href="{{route('area.index')}}"> Areas de Conocimientos</a></li>
+                    <li><a href="{{route('area.index')}}"> Áreas de Conocimientos</a></li>
                     <li><a href="{{route('materias.index')}}"> Materias</a></li>
                     @can('dar_permisos')
                     <li><a href="{{route('mantenimiento.index')}}"> Mantenimiento</a></li>
