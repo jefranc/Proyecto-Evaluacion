@@ -18,10 +18,7 @@ use App\comprobacione_auto;
 
 class Editar_UsuarioController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
     public function index(Request $request)
     {
         $name = auth()->user()->name;

@@ -64,7 +64,7 @@
                             </form>
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                                Editar Información de Perfil
+                                Cambiar contraseña
                             </button>
                         </ul>
                     </div>
@@ -137,43 +137,7 @@
                                                     <br />
                                                     <form action="{{ route('editar_perfil.update', $id) }}" class="form-label-left input_mask" method="POST">
                                                         @csrf
-                                                        @method('put')
-                                                        <div class="col-md-6 col-sm-6  form-group has-feedback">
-                                                            <h2>Nombre</h2>
-                                                            <input type="text" class="form-control" name="name" value="{{ $name }}">
-                                                            @error('name')
-                                                            <span class="invalid-feedback" role="alert">
-                                                                <strong>{{ $message }}</strong>
-                                                            </span>
-                                                            @enderror
-                                                        </div>
-                                                        <div class="col-md-6 col-sm-6  form-group has-feedback">
-                                                            <h2>Apellido</h2>
-                                                            <input type="text" class="form-control" name="apellido" value="{{ $apellido }}">
-                                                            @error('apellido')
-                                                            <span class="invalid-feedback" role="alert">
-                                                                <strong>{{ $message }}</strong>
-                                                            </span>
-                                                            @enderror
-                                                        </div>
-                                                        <div class="col-md-6 col-sm-6  form-group has-feedback">
-                                                            <h2>Email</h2>
-                                                            <input type="email" class="form-control" name="email" value="{{ $email }}">
-                                                            @error('email')
-                                                            <span class="invalid-feedback" role="alert">
-                                                                <strong>{{ $message }}</strong>
-                                                            </span>
-                                                            @enderror
-                                                        </div>
-                                                        <div class="col-md-6 col-sm-6  form-group has-feedback">
-                                                            <h2>Cedula</h2>
-                                                            <input type="cedula" class="form-control" name="cedula" value="{{ $cedula }}">
-                                                            @error('cedula')
-                                                            <span class="invalid-feedback" role="alert">
-                                                                <strong>{{ $message }}</strong>
-                                                            </span>
-                                                            @enderror
-                                                        </div>
+                                                        @method('put')                                                
                                                         <div class="col-md-6 col-sm-6  form-group has-feedback">
                                                             <h2>Contraseña</h2>
                                                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Escriba su Contraseña Aqui">

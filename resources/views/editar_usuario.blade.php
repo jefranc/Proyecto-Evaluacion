@@ -329,8 +329,7 @@
                                                         </div>
                                                         <div class="col-md-6 col-sm-6  form-group has-feedback">
                                                             <h2>Cedula</h2>
-                                                            <input type="cedula" class="form-control" name="cedula" value="{{ $usuario1->cedula }}">
-                                                            @error('cedula')
+                                                            <input id="cedula" type="text" onkeypress="return validaNumericos(event)" class="form-control @error('cedula') is-invalid @enderror" name="cedula" value="{{ $usuario1->cedula }}" required autocomplete="cedula" placeholder="Escriba su Cedula Aqui">                                                            @error('cedula')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
@@ -417,6 +416,17 @@
                     $(this).show();
             });
         });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        console.log("listo!");
+        $('input#cedula')
+            .keypress(function(event) {
+                if (event.which < 48 || event.which > 57 || this.value.length === 10) {
+                    return false;
+                }
+            });
     });
 </script>
 @endsection
