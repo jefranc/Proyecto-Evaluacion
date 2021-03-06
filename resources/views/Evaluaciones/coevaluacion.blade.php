@@ -176,7 +176,7 @@
             </div>
         </div>
         <input type="hidden" name="cedula" id="cedula" value="{{ $cedula }}" />
-        <button class="btn btn-info" id="boton" style="float: right">Guardar</button>
+        <button class="btn btn-info" id="open" style="float: right">Guardar</button>
     </form>
 </body>
 @else
@@ -197,5 +197,16 @@
         console.log(mate);
         document.getElementById("mate").value = mate;
     });
+</script>
+<script>
+    function abrirNuevoTab(url) {
+        // Abrir nuevo tab
+        var win = window.open(url, '_blank');
+        // Cambiar el foco al nuevo tab (punto opcional)
+        win.focus();
+    }
+    $('#open').click(function() {
+        abrirNuevoTab('https://forms.office.com/Pages/ResponsePage.aspx?id=53YPJQVh40KC0L58RgrqWRTOjlmffnVHjeQN4hD3CJBUQUtTWTVYTTlaSFNMUlNVN0ZWVTc5Rk1XVi4u')
+    })
 </script>
 @endsection

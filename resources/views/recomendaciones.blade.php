@@ -10,7 +10,7 @@
     <div class="col-md-12 col-sm-12  ">
         <div class="x_panel">
             <div class="x_title">
-                <h1>Te recomendamos estos cursos!!!</h1>
+                <center><h1>Cursos de capacitación para docentes</h1>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
