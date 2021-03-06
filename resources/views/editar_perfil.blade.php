@@ -137,10 +137,11 @@
                                                     <br />
                                                     <form action="{{ route('editar_perfil.update', $id) }}" class="form-label-left input_mask" method="POST">
                                                         @csrf
-                                                        @method('put')                                                
+                                                        @method('put')
+                                                        
                                                         <div class="col-md-6 col-sm-6  form-group has-feedback">
-                                                            <h2>Contraseña</h2>
-                                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Escriba su Contraseña Aqui">
+                                                            <h6>Escriba su nueva contraseña</h6>
+                                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Escriba su contraseña">
                                                             @error('password')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -172,6 +173,7 @@
 
 @endsection
 @section('scripts')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
         console.log("listo!");

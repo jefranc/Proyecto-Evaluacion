@@ -28,10 +28,6 @@ use Auth;
 class Editar_PerfilController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     public function index()
     {
@@ -151,13 +147,12 @@ class Editar_PerfilController extends Controller
     public function update(Request $request, $id)
     {
         //se actualiza informacion del usuario
+        $request->validate([
+            'password' => 'required'
+        ]);
 
         $user = User::where('id', '=', $id)->first();
 
-        $user->name = $request->name;
-        $user->apellido = $request->apellido;
-        $user->email = $request->email;
-        $user->cedula = $request->cedula;
         $user->password = Hash::make($request['password']);
         $user->save();
 
