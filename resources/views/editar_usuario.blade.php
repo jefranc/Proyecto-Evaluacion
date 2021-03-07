@@ -132,7 +132,7 @@
                                                             <tr>
                                                                 @foreach($areas_user as $areas_use)
                                                                 @if($area->id == $areas_use->area_conocimiento_id )
-                                                                <td><input type="checkbox" name="areas[]" class="flat" value="{{ $area->area}}" checked> {{ $area->area }}-{{ $area->carrera }}</td>
+                                                                <td><input type="checkbox" name="areas[]" class="flat" value="{{ $area->area}}" checked> {{ $area->area }}</td>
                                                                 <?php
                                                                 $ar[$con] = $area->area;
                                                                 $con = $con + 1;
@@ -142,10 +142,10 @@
                                                                 @endif
                                                                 @endforeach
                                                                 @if($area->id != $areas_use->area_conocimiento_id )
-                                                                <td><input type="checkbox" name="areas[]" class="flat" value="{{ $area->area }}"> {{ $area->area }}-{{ $area->carrera }}</td>
+                                                                <td><input type="checkbox" name="areas[]" class="flat" value="{{ $area->area }}"> {{ $area->area }}</td>
                                                                 @endif
                                                                 @else
-                                                                <td><input type="checkbox" name="areas[]" class="flat" value="{{ $area->area }}"> {{ $area->area }}-{{ $area->carrera }}</td>
+                                                                <td><input type="checkbox" name="areas[]" class="flat" value="{{ $area->area }}"> {{ $area->area }}</td>
                                                             </tr>
                                                             @endif
                                                             @endforeach
