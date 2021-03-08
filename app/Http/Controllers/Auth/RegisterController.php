@@ -83,8 +83,7 @@ class RegisterController extends Controller
             'status' => 0,
             'auto' => 0,
         ]);
-
-        //rol: Docente   
+ 
         $user->assignRole('Docente');
 
         return $user;

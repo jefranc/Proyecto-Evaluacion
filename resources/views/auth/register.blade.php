@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Registro') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" onsubmit="return validar();">
                         @csrf
 
                         <div class="form-group row">
@@ -91,7 +91,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary"  id="guardar">
                                     {{ __('Registro') }}
                                 </button>
                             </div>
@@ -114,4 +114,34 @@
             });
     });
 </script>
+<script type="text/javascript">
+    function validar() {
+        var cad = document.getElementById("cedula").value.trim();
+        var total = 0;
+        var longitud = cad.length;
+        var longcheck = longitud - 1;
+
+        if (cad !== "" && longitud === 10) {
+            for (i = 0; i < longcheck; i++) {
+                if (i % 2 === 0) {
+                    var aux = cad.charAt(i) * 2;
+                    if (aux > 9) aux -= 9;
+                    total += aux;
+                } else {
+                    total += parseInt(cad.charAt(i)); // parseInt o concatenará en lugar de sumar
+                }
+            }
+
+            total = total % 10 ? 10 - total % 10 : 0;
+
+            if (cad.charAt(longitud - 1) == total) {
+                return true;
+            } else {
+                alert("Cedula Inválida");
+                return false;
+            }
+        }
+    }
+</script>
+
 @endsection
