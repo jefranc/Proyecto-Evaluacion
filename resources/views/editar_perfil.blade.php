@@ -1,10 +1,8 @@
 @extends('base')
 
-@section('title', 'Editar Perfil')
+@section('title', 'Editar Usuario')
 
 @section('content')
-
-
 <div class="">
     <div class="page-title">
         <div class="title_left">
@@ -18,8 +16,7 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2>Información del Usuario</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                    </ul>
+
                     <div class="clearfix">
                     </div>
                 </div>
@@ -60,11 +57,11 @@
                                     <small class="text-danger">{{$message}}</small>
                                     @enderror
                                 </div>
-                                <label for="name" class="col-md-4 col-form-label text-md-right">Tamaño max: 5mb</br> Dimensiones: 220x240</br></label> 
                                 <div>
-                                <button type="submit" class="btn btn-primary">Subir Imagen</button>
+                                    <label for="name" class="col-md-4 col-form-label text-md-right">Peso max: 5mb</br> Dimensiones: 220x240</br></label>
+                                    <button type="submit" class="btn btn-primary">Subir Imagen</button>
                                 </div>
-                                                               
+
                             </form>
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
@@ -97,7 +94,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            
+
                             <table class="table table-bordered pull-right">
                                 <thead>
                                     <tr class="bg-info">
@@ -142,7 +139,7 @@
                                                     <form action="{{ route('editar_perfil.update', $id) }}" class="form-label-left input_mask" method="POST">
                                                         @csrf
                                                         @method('put')
-                                                        
+
                                                         <div class="col-md-6 col-sm-6  form-group has-feedback">
                                                             <h6>Escriba su nueva contraseña</h6>
                                                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Escriba su contraseña">
@@ -174,10 +171,8 @@
         </div>
     </div>
 </div>
-
 @endsection
 @section('scripts')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
         console.log("listo!");
