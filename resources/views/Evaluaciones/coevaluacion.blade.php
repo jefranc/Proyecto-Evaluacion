@@ -176,7 +176,7 @@
             </div>
         </div>
         <input type="hidden" name="cedula" id="cedula" value="{{ $cedula }}" />
-        <button class="btn btn-info"  style="float: right">Guardar</button>
+        <button class="btn btn-info" id="open" style="float: right">Guardar</button>
     </form>
 </body>
 @else
