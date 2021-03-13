@@ -18,7 +18,7 @@
             <h3>Reporte de Coevaluación</h3>
     </div>
     <div>
-        <h5>Lista de docentes coevaluados</h5>
+        <h5>Lista de docentes que faltan coevaluar</h5>
     </div>
     <div class="x_panel">
         <div class="table" style="width:100%">
