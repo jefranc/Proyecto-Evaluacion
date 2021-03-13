@@ -27,7 +27,7 @@
                             <tr class="bg-info">
                                 <th scope="col">#</th>
                                 <th scope="col">Materias disponibles</th>
-                                <th scope="col">Aréa del Conocimiento</th>
+                                <th scope="col">Área del Conocimiento</th>
                                 <th scope="col">Eliminar</th>
                             </tr>
                         </thead>
@@ -82,7 +82,7 @@
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <label class="input-group-text" for="inputGroupSelect01">Area de Conocimiento</label>
+                            <label class="input-group-text" for="inputGroupSelect01">Área de Conocimiento</label>
                         </div>
                         <select class="custom-select" id="inputGroupSelect01" name="area" required>
                             @foreach($areas as $area)

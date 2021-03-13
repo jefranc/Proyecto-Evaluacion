@@ -7,7 +7,7 @@
             @can('evaluar')
             <li><a> Evaluaciones <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li><a href="{{route('autoevaluacion.index')}}">Autoevaluacion</a></li>
+                    <li><a href="{{route('autoevaluacion.index')}}">Autoevaluación</a></li>
                 </ul>
             </li>
             @endcan

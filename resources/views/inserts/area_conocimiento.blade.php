@@ -7,7 +7,7 @@
     <div class="col-md-6 col-sm-6">
         <div class="x_panel">
             <div class="x_title">
-                <h2><i class=""></i>Areas del Conocimiento</h2>
+                <h2><i class=""></i>Áreas del Conocimiento</h2>
                 <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
@@ -28,7 +28,7 @@
                             <tr class="bg-info">
                                 <th scope="col">#</th>
                                 <th scope="col">Carrera</th>
-                                <th scope="col">Areas del conocimiento disponibles</th>
+                                <th scope="col">Áreas del conocimiento disponibles</th>
                                 <th scope="col">Eliminar</th>
                             </tr>
                         </thead>
@@ -45,7 +45,7 @@
                                     <th scope="row">{{ $num }}</th>
                                     <td>{{ $areas1->carrera }}</td>
                                     <td>{{ $areas1->area }}</td>
-                                    <td><button class="btnarea btn-outline-danger" data-id="{{ $areas1->area }}">Eliminar Aréa</button></td>
+                                    <td><button class="btnarea btn-outline-danger" data-id="{{ $areas1->area }}">Eliminar Área</button></td>
                                 </tr>
                                 <?php
                                 $num = $num + 1;

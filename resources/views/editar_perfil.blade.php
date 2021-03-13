@@ -76,7 +76,7 @@
                                 <thead>
                                     <tr class="bg-info">
                                         <th scope="col">#</th>
-                                        <th scope="col">Areas del conocimiento a cargo</th>
+                                        <th scope="col">Áreas del conocimiento a cargo</th>
                                     </tr>
                                 </thead>
                                 <tbody>

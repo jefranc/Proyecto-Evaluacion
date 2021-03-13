@@ -44,6 +44,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/preguntas_coe','Preguntas_CoeController@index')->name('preguntas_coe');
         Route::get('/criterios','CriteriosController@index')->name('criterios');
         Route::get('/pdf2', 'Pdf2Controller@PDF2')->name('descargarPDF2');
+        Route::get('/reporte_auto', 'Reporte_AutoController@reporte_auto')->name('reporte_autoPDF');
+        Route::get('/reporte_auto_falta', 'Reporte_Auto_FaltaController@reporte_auto_falta')->name('reporte_auto_faltaPDF');
+        Route::get('/reporte_coe_falta', 'Reporte_Coe_FaltaController@reporte_coe_falta')->name('reporte_coe_faltaPDF');
+        Route::get('/reporte_coe', 'Reporte_CoeController@reporte_coe')->name('reporte_coePDF');
         Route::resource('controlador_evaluaciones', 'Controlador_EvaluacionesController');
         Route::resource('editar_usuario', 'Editar_UsuarioController');  
         Route::resource('resultados_todos', 'Resultados_TodosController');  

@@ -20,12 +20,12 @@ $tipo3 = 'coe';
     <form action="{{ route('controlador_evaluaciones.update', $tipo2) }}" method="POST">
         @csrf
         @method('put')
-        <button class="btncedula btn btn-info" " value=" Editar">Docentes que faltan por autoevaluarse</button>
+        <button class="btncedula btn btn-info" " value=" Editar">Autoevaluación</button>
     </form>
     <form action="{{ route('controlador_evaluaciones.update', $tipo3) }}" method="POST">
         @csrf
         @method('put')
-        <button class="btncedula btn btn-info" " value=" Editar">Docentes que faltan por coevaluar</button>
+        <button class="btncedula btn btn-info" " value=" Editar">Coevaluación</button>
     </form>
 </div>
 
@@ -49,12 +49,18 @@ $tipo3 = 'coe';
     <form action="{{ route('controlador_evaluaciones.update', $tipo2) }}" method="POST">
         @csrf
         @method('put')
-        <button class="btncedula btn btn-info" " value=" Editar">Docentes que faltan por autoevaluarse</button>
+        <button class="btncedula btn btn-info" " value=" Editar">Autoevaluación</button>
     </form>
     <form action="{{ route('controlador_evaluaciones.update', $tipo3) }}" method="POST">
         @csrf
         @method('put')
-        <button class="btncedula btn btn-info" " value=" Editar">Docentes que faltan por coevaluar</button>
+        <button class="btncedula btn btn-info" " value=" Editar">Coevaluación</button>
+    </form>
+    <form action="{{ route('reporte_autoPDF') }}" method="GET">
+        <button class="btn btn-sm btn-info pull-right" target="_blank">Descargar reportes de docentes autoevaluados</button>
+    </form>
+    <form action="{{ route('reporte_auto_faltaPDF') }}" method="GET">
+        <button class="btn btn-sm btn-info pull-right" target="_blank">Descargar reportes de docentes que faltan autoevaluarse</button>
     </form>
     <input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar Docente...">
 </div>
@@ -112,12 +118,18 @@ $tipo3 = 'coe';
     <form action="{{ route('controlador_evaluaciones.update', $tipo2) }}" method="POST">
         @csrf
         @method('put')
-        <button class="btncedula btn btn-info" " value=" Editar">Docentes que faltan por autoevaluarse</button>
+        <button class="btncedula btn btn-info" " value=" Editar">Autoevaluación</button>
     </form>
     <form action="{{ route('controlador_evaluaciones.update', $tipo3) }}" method="POST">
         @csrf
         @method('put')
-        <button class="btncedula btn btn-info" " value=" Editar">Docentes que faltan por coevaluar</button>
+        <button class="btncedula btn btn-info" " value=" Editar">Coevaluación</button>
+    </form>
+    <form action="{{ route('reporte_coePDF') }}" method="GET">
+        <button class="btn btn-sm btn-info pull-right" target="_blank">Descargar reportes de docentes coevaluados</button>
+    </form>
+    <form action="{{ route('reporte_coe_faltaPDF') }}" method="GET">
+        <button class="btn btn-sm btn-info pull-right" target="_blank">Descargar reportes de docentes que faltan coevaluar</button>
     </form>
     <input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar Docente...">
 </div>
@@ -134,39 +146,28 @@ $tipo3 = 'coe';
             </tr>
         </thead>
         <tbody>
-            <form action="{{ route('editar_usuario.index') }}" method="GET">
-                @foreach ($compro as $compr)
-                <tr class="even pointer">
-                    @if($compr->estado == 0)
-                    @foreach($docentes as $docente)
-                    @if($compr->evaluado == $docente->cedula)
-                    <td class=" ">{{ $docente->apellido }}</td>
-                    <td class=" ">{{ $docente->name }}</td>
-                    <td class=" ">{{ $docente->cedula }}</td>
-                    <td class=" ">{{ $docente->email }}</td>
-                    @foreach($docentes as $docent)
-                    @if($compr->ci_coevaluador_id == $docent->cedula)
-                    <td class=" ">{{ $docent->apellido }} {{ $docent->name }}</td>
-                    <td class=" ">Falta Coevaluar</td>
-                    @endif
-                    @endforeach
-                    @endif
-                    @endforeach
-                    @else
-                    <td class=" ">{{ $docente->apellido }}</td>
-                    <td class=" ">{{ $docente->name }}</td>
-                    <td class=" ">{{ $docente->cedula }}</td>
-                    <td class=" ">{{ $docente->email }}</td>
-                    @foreach($docentes as $docent)
-                    @if($compr->ci_coevaluador_id == $docent->cedula)
-                    <td class=" ">{{ $docent->apellido }} {{ $docent->name }}</td>
-                    <td class=" ">Coevaluado</td>
-                    @endif
-                    @endforeach
-                    @endif
-                </tr>
+            @foreach ($compro as $compr)
+            @foreach($docentes as $docente)
+            @if($compr->evaluado == $docente->cedula)
+            <tr class="even pointer">
+                <td class=" ">{{ $docente->apellido }}</td>
+                <td class=" ">{{ $docente->name }}</td>
+                <td class=" ">{{ $docente->cedula }}</td>
+                <td class=" ">{{ $docente->email }}</td>
+                @foreach($docentes as $docent)
+                @if($compr->ci_coevaluador_id == $docent->cedula)
+                <td class=" ">{{ $docent->apellido }} {{ $docent->name }}</td>
+                @endif
                 @endforeach
-            </form>
+                @if($compr->estado == 0)
+                <td class=" ">Falta Coevaluar</td>
+                @else
+                <td class=" ">Coevaluado</td>
+                @endif
+            </tr>
+            @endif
+            @endforeach
+            @endforeach
         </tbody>
     </table>
 </div>
