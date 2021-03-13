@@ -24,113 +24,43 @@
                     ?>
                     <div class="table" style="width:100%">
                         @if(($total_auto != null) || ($total_coe != null))
-                        @if(($resultado_auto_tic < 76 ) || ($resultado_auto_peda < 76 ) || ($resultado_auto_dida < 76 ) || ($resultado_coe_tic < 76 ) || ($resultado_coe_peda < 76 ) || ($resultado_coe_dida < 76 )) <h3>Cursos Requeridos</h3>
-                            @foreach($cursos as $curso)
-                            @if(($resultado_auto_tic < 76 ) || ($resultado_coe_tic < 76 )) @if($curso->criterio == 'Tics')
-                                <div class="col-md-55">
-                                    <div class="thumbnail">
-                                        <div class="image view view-first">
-                                            <img style="width: 100%; display: block;" src={{ URL::asset($curso->imagen) }} alt="image" />
-                                            <div class="mask">
-                                                <p>{{ $curso->criterio }}</p>
-                                                <div class="tools tools-bottom">
-                                                    <a href="#"><i class="fa fa-link"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="caption">
-                                            <center>
-                                                <font face="Comic Sans MS,Arial,Verdana">
-                                                    <p>{{ $curso->curso }} </p>
-                                                    <font>
-                                                        <?php
-                                                        $comp = 1;
-                                                        ?>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                @endif
-                                @endif
-                                @if(($resultado_auto_peda < 76 ) || ($resultado_coe_peda < 76 )) @if($curso->criterio == 'Pedagogía')
-                                    <div class="col-md-55">
-                                        <div class="thumbnail">
-                                            <div class="image view view-first">
-                                                <img style="width: 100%; display: block;" src={{ URL::asset($curso->imagen) }} alt="image" />
-                                                <div class="mask">
-                                                    <p>{{ $curso->criterio }}</p>
-                                                    <div class="tools tools-bottom">
-                                                        <a href="#"><i class="fa fa-link"></i></a>
+                            @if(($resultado_auto_tic < 76 ) || ($resultado_auto_peda < 76 ) || ($resultado_auto_dida < 76 ) || ($resultado_coe_tic < 76 ) || ($resultado_coe_peda < 76 ) || ($resultado_coe_dida < 76 )) 
+                                <h3>Cursos Requeridos</h3>
+                                @foreach($cursos as $curso)
+                                    @if(($resultado_auto_tic < 76 ) || ($resultado_coe_tic < 76 )) 
+                                        @if($curso->criterio == 'Tics')
+                                            <div class="col-md-55">
+                                                <div class="thumbnail">
+                                                    <div class="image view view-first">
+                                                        <img style="width: 100%; display: block;" src={{ URL::asset($curso->imagen) }} alt="image" />
+                                                            <div class="mask">
+                                                                <p>{{ $curso->criterio }}</p>
+                                                                <div class="tools tools-bottom">
+                                                                    <a href="#"><i class="fa fa-link"></i></a>
+                                                                </div>
+                                                            </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="caption">
-                                                <center>
-                                                    <font face="Comic Sans MS,Arial,Verdana">
-                                                        <p>{{ $curso->curso }} </p>
-                                                        <font>
+                                                    <div class="caption">
+                                                        <center>
+                                                            <font face="Comic Sans MS,Arial,Verdana">
+                                                                <p>{{ $curso->curso }} </p>
+                                                            <font>
                                                             <?php
                                                             $comp = 1;
                                                             ?>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    @endif
-                                    @endif
-                                    @if(($resultado_auto_dida < 76 ) || ($resultado_coe_dida < 76 )) @if($curso->criterio == 'Didáctica')
-                                        <div class="col-md-55">
-                                            <div class="thumbnail">
-                                                <div class="image view view-first">
-                                                    <img style="width: 100%; display: block;" src={{ URL::asset($curso->imagen) }} alt="image" />
-                                                    <div class="mask">
-                                                        <p>{{ $curso->criterio }}</p>
-                                                        <div class="tools tools-bottom">
-                                                            <a href="#"><i class="fa fa-link"></i></a>
-                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="caption">
-                                                    <center>
-                                                        <font face="Comic Sans MS,Arial,Verdana">
-                                                            <p>{{ $curso->curso }} </p>
-                                                            <font>
-                                                                <?php
-                                                                $comp = 1;
-                                                                ?>
-                                                </div>
                                             </div>
-                                        </div>
-
                                         @endif
-                                        @endif
-                                        @if($comp == 0)
-                                        <?php
-                                        $array_id[$cont] = $curso->curso;
-                                        $array_id2[$cont] = $curso->criterio;
-                                        $cont = $cont + 1;
-                                        $comp = '0';
-                                        ?>
-                                        @else
-                                        <?php
-                                        $comp = '0';
-                                        ?>
-                                        @endif
-                                        @endforeach
-                                        @endif
-                                        </br>
-                                        <div class="x_content" style="width:100%">
-                                            <h3>Cursos Opcionales</h3>
-                                            @foreach($array_id as $array_i) <div class="col-md-55">
+                                    @endif
+                                    @if(($resultado_auto_peda < 76 ) || ($resultado_coe_peda < 76 )) 
+                                        @if($curso->criterio == 'Pedagogía')
+                                            <div class="col-md-55">
                                                 <div class="thumbnail">
                                                     <div class="image view view-first">
-                                                        @foreach($cursos as $curso)
-                                                        @if($array_i == $curso->curso)
                                                         <img style="width: 100%; display: block;" src={{ URL::asset($curso->imagen) }} alt="image" />
-                                                        @endif
-                                                        @endforeach
                                                         <div class="mask">
-                                                            <p></p>
+                                                            <p>{{ $curso->criterio }}</p>
                                                             <div class="tools tools-bottom">
                                                                 <a href="#"><i class="fa fa-link"></i></a>
                                                             </div>
@@ -138,24 +68,25 @@
                                                     </div>
                                                     <div class="caption">
                                                         <center>
-                                                            <font face="Comic Sans MS,Arial,Verdana">
-                                                                <p>{{ $array_i }} </p>
-                                                                <font>
+                                                        <font face="Comic Sans MS,Arial,Verdana">
+                                                            <p>{{ $curso->curso }} </p>
+                                                        <font>
+                                                        <?php
+                                                        $comp = 1;
+                                                        ?>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            @endforeach
-                                        </div>
-                                        @else
-                                        <div class="x_content" style="width:100%">
-                                            <h3>Cursos Opcionales</h3>
-                                            @foreach($cursos as $curso) <div class="col-md-55">
+                                        @endif
+                                    @endif
+                                    @if(($resultado_auto_dida < 76 ) || ($resultado_coe_dida < 76 )) 
+                                        @if($curso->criterio == 'Didáctica')
+                                            <div class="col-md-55">
                                                 <div class="thumbnail">
                                                     <div class="image view view-first">
                                                         <img style="width: 100%; display: block;" src={{ URL::asset($curso->imagen) }} alt="image" />
                                                         <div class="mask">
-                                                            <p></p>
+                                                            <p>{{ $curso->criterio }}</p>
                                                             <div class="tools tools-bottom">
                                                                 <a href="#"><i class="fa fa-link"></i></a>
                                                             </div>
@@ -165,14 +96,107 @@
                                                         <center>
                                                             <font face="Comic Sans MS,Arial,Verdana">
                                                                 <p>{{ $curso->curso }} </p>
-                                                                <font>
+                                                            <font>
+                                                            <?php
+                                                            $comp = 1;
+                                                            ?>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            @endforeach
-                                        </div>
                                         @endif
+                                    @endif
+                                    @if($comp == 0)
+                                        <?php
+                                        $array_id[$cont] = $curso->curso;
+                                        $array_id2[$cont] = $curso->criterio;
+                                        $cont = $cont + 1;
+                                        $comp = '0';
+                                        ?>
+                                    @else
+                                        <?php
+                                        $comp = '0';
+                                        ?>
+                                    @endif
+                                @endforeach
+                                </br>
+                            <div class="x_content" style="width:100%">
+                                <h3>Cursos Opcionales</h3>
+                                @foreach($array_id as $array_i) <div class="col-md-55">
+                                    <div class="thumbnail">
+                                        <div class="image view view-first">
+                                            @foreach($cursos as $curso)
+                                                @if($array_i == $curso->curso)
+                                                    <img style="width: 100%; display: block;" src={{ URL::asset($curso->imagen) }} alt="image" />
+                                                @endif
+                                            @endforeach
+                                            <div class="mask">
+                                                <p></p>
+                                                <div class="tools tools-bottom">
+                                                    <a href="#"><i class="fa fa-link"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="caption">
+                                            <center>
+                                            <font face="Comic Sans MS,Arial,Verdana">
+                                                <p>{{ $array_i }} </p>
+                                            <font>
+                                        </div>
+                                    </div>
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            @else
+                                <div class="x_content" style="width:100%">
+                                    <h3>Cursos Opcionales</h3>
+                                    @foreach($cursos as $curs) <div class="col-md-55">
+                                        <div class="thumbnail">
+                                            <div class="image view view-first">
+                                                <img style="width: 100%; display: block;" src={{ URL::asset($curs->imagen) }} alt="image" />
+                                                <div class="mask">
+                                                    <p></p>
+                                                    <div class="tools tools-bottom">
+                                                        <a href="#"><i class="fa fa-link"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="caption">
+                                                <center>
+                                                <font face="Comic Sans MS,Arial,Verdana">
+                                                    <p>{{ $curs->curso }} </p>
+                                                <font>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+                        @else
+                            <div class="x_content" style="width:100%">
+                                <h3>Cursos Opcionales</h3>
+                                @foreach($cursos as $curso) <div class="col-md-55">
+                                    <div class="thumbnail">
+                                        <div class="image view view-first">
+                                            <img style="width: 100%; display: block;" src={{ URL::asset($curso->imagen) }} alt="image" />
+                                            <div class="mask">
+                                                <p></p>
+                                                <div class="tools tools-bottom">
+                                                    <a href="#"><i class="fa fa-link"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="caption">
+                                            <center>
+                                            <font face="Comic Sans MS,Arial,Verdana">
+                                                <p>{{ $curso->curso }} </p>
+                                            <font>
+                                        </div>
+                                    </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
